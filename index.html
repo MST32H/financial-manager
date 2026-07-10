@@ -126,9 +126,11 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
 .bucket-mini-title { font-size: 14px; font-weight: bold; margin-bottom: 8px; color: var(--text-primary); }
 .bucket-mini-amount { font-size: 18px; font-weight: bold; color: var(--header-text); }
 .upcoming-installments, .recent-transactions, .investment-list { max-height: 400px; overflow-y: auto; }
-.installment-item, .investment-item { background: var(--bg-input); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-right: 4px solid #f59e0b; }
-.installment-title, .investment-title { font-weight: bold; margin-bottom: 5px; color: var(--text-primary); }
-.installment-details, .investment-details { font-size: 14px; color: var(--text-secondary); }
+.installment-item, .investment-item, .budget-item, .goal-item { background: var(--bg-input); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-right: 4px solid #f59e0b; }
+.budget-item { border-right-color: #3b82f6; }
+.goal-item { border-right-color: #10b981; }
+.installment-title, .investment-title, .budget-title, .goal-title { font-weight: bold; margin-bottom: 5px; color: var(--text-primary); }
+.installment-details, .investment-details, .budget-details, .goal-details { font-size: 14px; color: var(--text-secondary); }
 .transaction-item { background: var(--bg-input); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
 .transaction-info { flex: 1; }
 .transaction-title { font-weight: bold; margin-bottom: 5px; color: var(--text-primary); }
@@ -157,12 +159,17 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
 @keyframes slideDown { from { transform: translate(-50%, -100%); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
 .empty-state { text-align: center; padding: 40px; color: var(--empty-state); }
 .empty-state-icon { font-size: 48px; margin-bottom: 15px; }
-.progress-bar { width: 100%; height: 8px; background: var(--border-color); border-radius: 10px; overflow: hidden; margin-top: 10px; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%); transition: width 0.3s; }
-.installment-actions, .investment-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.progress-bar { width: 100%; height: 12px; background: var(--border-color); border-radius: 10px; overflow: hidden; margin-top: 10px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%); transition: width 0.5s; }
+.progress-fill.success { background: linear-gradient(90deg, #10b981 0%, #059669 100%); }
+.progress-fill.warning { background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%); }
+.progress-fill.danger { background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%); }
+.installment-actions, .investment-actions, .budget-actions, .goal-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
 .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-right: 8px; }
 .badge-warning { background: #fef3c7; color: #92400e; }
 .badge-success { background: #d1fae5; color: #065f46; }
+.badge-danger { background: #fee2e2; color: #991b1b; }
+.badge-info { background: #dbeafe; color: #1e40af; }
 .investment-summary { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; text-align: center; }
 .investment-summary-value { font-size: 36px; font-weight: bold; margin: 15px 0; }
 .reset-warning { background: #fee2e2; border: 2px solid #ef4444; padding: 20px; border-radius: 10px; margin: 20px 0; }
@@ -178,6 +185,14 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
 .chart-container h3 { color: var(--header-text); margin-bottom: 15px; font-size: 18px; text-align: center; }
 .chart-wrapper { position: relative; height: 300px; }
 .theme-info { background: var(--bg-input); padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; color: var(--text-secondary); font-size: 14px; }
+.budget-status { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 13px; }
+.budget-status.over { color: #ef4444; font-weight: bold; }
+.budget-status.warning { color: #f59e0b; font-weight: bold; }
+.budget-status.ok { color: #10b981; font-weight: bold; }
+.goal-deadline { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+.goal-calculation { background: var(--bg-card); padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 13px; color: var(--text-secondary); border-right: 3px solid #3b82f6; }
+.deposit-form { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.deposit-form input { flex: 1; min-width: 150px; }
 @media (max-width: 768px) {
   .tabs { flex-direction: column; }
   .tab { width: 100%; }
@@ -194,7 +209,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
 <div class="container">
   <div id="loginPage" class="login-container">
     <h2>💰 مدیریت مالی حرفه‌ای</h2>
-    <p>نسخه ۲.۱ - داده‌ها در فضای ابری</p>
+    <p>نسخه ۲.۲ - داده‌ها در فضای ابری</p>
     <div id="loginAlert"></div>
     
     <div id="loginForm">
@@ -247,12 +262,12 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
     <header class="header">
       <div class="user-info">
         <span id="userEmail"></span>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم">🌙</button>
-        <button class="install-btn" id="installBtn" onclick="installApp()" style="display: none;"> نصب</button>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم"></button>
+        <button class="install-btn" id="installBtn" onclick="installApp()" style="display: none;">📲 نصب</button>
         <button class="logout-btn" onclick="logout()">خروج</button>
       </div>
       <h1>💰 مدیریت مالی حرفه‌ای</h1>
-      <p>نسخه ۲.۱ - داده‌ها در فضای ابری - سینک خودکار</p>
+      <p>نسخه ۲.۲ - داده‌ها در فضای ابری - سینک خودکار</p>
       <div class="date-display" id="currentDate"></div>
       <div class="sync-status synced" id="syncStatus">✅ سینک شده</div>
     </header>
@@ -261,7 +276,9 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <button class="tab active" data-tab="dashboard">📊 داشبورد</button>
       <button class="tab" data-tab="income">💵 درآمد</button>
       <button class="tab" data-tab="expense">💳 هزینه</button>
-      <button class="tab" data-tab="installments"> اقساط</button>
+      <button class="tab" data-tab="budget">💰 بودجه</button>
+      <button class="tab" data-tab="goals">🎯 اهداف</button>
+      <button class="tab" data-tab="installments">📅 اقساط</button>
       <button class="tab" data-tab="investment">💎 سرمایه‌گذاری</button>
       <button class="tab" data-tab="buckets">🪣 سطل‌ها</button>
       <button class="tab" data-tab="accounts">🏦 حساب‌ها</button>
@@ -284,9 +301,9 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <div class="stat-unit">تومان</div>
         </div>
         <div class="stat-card expense-card">
-          <div class="stat-icon"></div>
+          <div class="stat-icon">📉</div>
           <div class="stat-label">هزینه این ماه</div>
-          <div class="stat-value" id="monthExpense"></div>
+          <div class="stat-value" id="monthExpense">۰</div>
           <div class="stat-unit">تومان</div>
         </div>
         <div class="stat-card savings-card">
@@ -296,9 +313,9 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <div class="stat-unit">تومان</div>
         </div>
         <div class="stat-card investment-card">
-          <div class="stat-icon">💎</div>
+          <div class="stat-icon"></div>
           <div class="stat-label">کل سرمایه‌گذاری</div>
-          <div class="stat-value" id="totalInvestment">۰</div>
+          <div class="stat-value" id="totalInvestment"></div>
           <div class="stat-unit">تومان</div>
         </div>
       </div>
@@ -314,6 +331,14 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         </div>
       </div>
       <div class="card">
+        <h3>💰 وضعیت بودجه این ماه</h3>
+        <div id="budgetOverview"></div>
+      </div>
+      <div class="card">
+        <h3>🎯 اهداف پس‌انداز</h3>
+        <div id="goalsOverview"></div>
+      </div>
+      <div class="card">
         <h3>💎 آخرین سرمایه‌گذاری‌ها</h3>
         <div class="investment-list" id="recentInvestments"></div>
       </div>
@@ -327,10 +352,10 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <div class="card">
         <h2>💵 ثبت درآمد جدید</h2>
         <form id="incomeForm">
-          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="incomeAmount" class="money-input" required placeholder="مثلاً: ۵,۰۰۰,۰۰"></div>
+          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="incomeAmount" class="money-input" required placeholder="مثلاً: ۵,۰۰,۰۰۰"></div>
           <div class="form-group"><label>حساب مقصد:</label><select id="incomeAccount" required></select></div>
           <div class="form-group"><label>توضیحات:</label><input type="text" id="incomeDescription" placeholder="مثلاً: پروژه طراحی سایت"></div>
-          <div class="form-group"><label>تاریخ:</label><input type="text" id="incomeDate" class="date-input" required placeholder="۱۴۰۳/۰۴/۱۵"></div>
+          <div class="form-group"><label>تاریخ:</label><input type="text" id="incomeDate" class="date-input" required placeholder="۴۰۳/۰۴/۱۵"></div>
           <div class="form-group"><label><input type="checkbox" id="autoDistribute" checked> تقسیم خودکار به سطل‌ها</label></div>
           <button type="submit" class="btn btn-primary">ثبت درآمد</button>
         </form>
@@ -341,28 +366,77 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <div class="card">
         <h2>💳 ثبت هزینه جدید</h2>
         <form id="expenseForm">
-          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="expenseAmount" class="money-input" required placeholder="مثلاً: ۵۰,۰۰۰"></div>
+          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="expenseAmount" class="money-input" required placeholder="مثلاً: ۵۰۰,۰۰۰"></div>
           <div class="form-group"><label>حساب مبدأ:</label><select id="expenseAccount" required></select></div>
           <div class="form-group"><label>دسته‌بندی:</label>
             <select id="expenseCategory" required>
               <option value="">انتخاب کنید...</option>
               <option value="food">🍞 خوراک</option>
               <option value="transport">🚗 حمل‌ونقل</option>
-              <option value="rent"> اجاره</option>
+              <option value="rent">🏡 اجاره</option>
               <option value="bills">📄 قبوض</option>
               <option value="installment">💳 قسط</option>
               <option value="entertainment">🎬 تفریح</option>
               <option value="shopping">🛍️ خرید</option>
-              <option value="health"> بهداشت و درمان</option>
+              <option value="health">🏥 بهداشت و درمان</option>
               <option value="education">📚 آموزش</option>
               <option value="investment">💎 سرمایه‌گذاری</option>
-              <option value="other"> سایر</option>
+              <option value="other">📦 سایر</option>
             </select>
           </div>
           <div class="form-group"><label>توضیحات:</label><input type="text" id="expenseDescription" placeholder="مثلاً: خرید هفتگی"></div>
-          <div class="form-group"><label>تاریخ:</label><input type="text" id="expenseDate" class="date-input" required placeholder="۱۴۳/۰۴/۱"></div>
+          <div class="form-group"><label>تاریخ:</label><input type="text" id="expenseDate" class="date-input" required placeholder="۱۰۳/۰۴/۵"></div>
           <button type="submit" class="btn btn-primary">ثبت هزینه</button>
         </form>
+      </div>
+    </section>
+
+    <section id="budget" class="content">
+      <div class="card">
+        <h2>💰 تنظیم بودجه ماهانه</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
+          💡 برای هر دسته‌بندی یه سقف بودجه تعیین کن. وقتی به ۸۰٪ برسی هشدار می‌گیری و وقتی رد بشی هشدار قرمز می‌بینی.
+        </p>
+        <form id="budgetForm">
+          <div class="form-group"><label>دسته‌بندی:</label>
+            <select id="budgetCategory" required>
+              <option value="food"> خوراک</option>
+              <option value="transport">🚗 حمل‌ونقل</option>
+              <option value="rent">🏡 اجاره</option>
+              <option value="bills">📄 قبوض</option>
+              <option value="entertainment">🎬 تفریح</option>
+              <option value="shopping">🛍️ خرید</option>
+              <option value="health">🏥 بهداشت و درمان</option>
+              <option value="education">📚 آموزش</option>
+              <option value="other">📦 سایر</option>
+            </select>
+          </div>
+          <div class="form-group"><label>سقف بودجه ماهانه (تومان):</label><input type="text" id="budgetAmount" class="money-input" required placeholder="مثلاً: ۵,۰۰۰,۰۰۰"></div>
+          <button type="submit" class="btn btn-primary">ذخیره بودجه</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>📊 بودجه‌های فعال این ماه</h2>
+        <div id="budgetsList"></div>
+      </div>
+    </section>
+
+    <section id="goals" class="content">
+      <div class="card">
+        <h2>🎯 تعریف هدف پس‌انداز جدید</h2>
+        <form id="goalForm">
+          <div class="form-group"><label>عنوان هدف:</label><input type="text" id="goalTitle" required placeholder="مثلاً: خرید ماشین، سفر، خانه"></div>
+          <div class="form-group"><label>مبلغ هدف (تومان):</label><input type="text" id="goalTarget" class="money-input" required placeholder="مثلاً: ۵۰,۰۰۰,۰۰"></div>
+          <div class="form-group"><label>مبلغ فعلی پس‌انداز شده (تومان):</label><input type="text" id="goalCurrent" class="money-input" value="۰" placeholder="مثلاً: ۵۰,۰۰۰,۰۰۰"></div>
+          <div class="form-group"><label>تاریخ هدف (اختیاری):</label><input type="text" id="goalDeadline" class="date-input" placeholder="مثلاً: ۴۰۴/۱۲/۲۹"></div>
+          <button type="submit" class="btn btn-primary">ایجاد هدف</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>🎯 اهداف من</h2>
+        <div id="goalsList"></div>
       </div>
     </section>
 
@@ -371,14 +445,14 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <h2>📅 ثبت قسط جدید</h2>
         <form id="installmentForm">
           <div class="form-group"><label>عنوان قسط:</label><input type="text" id="installmentTitle" required placeholder="مثلاً: وام خودرو"></div>
-          <div class="form-group"><label>مبلغ هر قسط (تومان):</label><input type="text" id="installmentAmount" class="money-input" required placeholder="مثلاً: ۲,۰۰,۰۰۰"></div>
+          <div class="form-group"><label>مبلغ هر قسط (تومان):</label><input type="text" id="installmentAmount" class="money-input" required placeholder="مثلاً: ۲,۰۰۰,۰۰۰"></div>
           <div class="form-group"><label>تعداد اقساط:</label><input type="number" id="installmentCount" required min="1" placeholder="مثلاً: ۱۲"></div>
-          <div class="form-group"><label>روز پرداخت هر ماه:</label><input type="number" id="installmentDay" required min="1" max="31" placeholder="مثلاً: ۱"></div>
+          <div class="form-group"><label>روز پرداخت هر ماه:</label><input type="number" id="installmentDay" required min="1" max="31" placeholder="مثلاً: ۱۵"></div>
           <button type="submit" class="btn btn-primary">ثبت قسط</button>
         </form>
       </div>
       <div class="card">
-        <h2>📋 لیست اقساط فعال</h2>
+        <h2> لیست اقساط فعال</h2>
         <div id="installmentsList"></div>
       </div>
     </section>
@@ -397,7 +471,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <div class="form-group"><label>مبلغ واریزی (تومان):</label><input type="text" id="investmentAmount" class="money-input" required placeholder="مثلاً: ۱۰,۰۰۰,۰۰۰"></div>
           <div class="form-group"><label>از حساب:</label><select id="investmentAccount" required></select></div>
           <div class="form-group"><label>توضیحات:</label><input type="text" id="investmentDescription" placeholder="مثلاً: خرید واحد"></div>
-          <div class="form-group"><label>تاریخ:</label><input type="text" id="investmentDate" class="date-input" required placeholder="۱۴۰۳/۰۴/۱۵"></div>
+          <div class="form-group"><label>تاریخ:</label><input type="text" id="investmentDate" class="date-input" required placeholder="۱۴۳/۰۴/۱"></div>
           <button type="submit" class="btn btn-primary">ثبت سرمایه‌گذاری</button>
         </form>
       </div>
@@ -466,13 +540,13 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         </div>
         <div class="charts-grid" style="margin-top: 20px;">
           <div class="chart-container">
-            <h3>📈 روند موجودی حساب‌ها</h3>
+            <h3> روند موجودی حساب‌ها</h3>
             <div class="chart-wrapper">
               <canvas id="balanceTrendChart"></canvas>
             </div>
           </div>
           <div class="chart-container">
-            <h3>🪣 وضعیت سطل‌ها</h3>
+            <h3> وضعیت سطل‌ها</h3>
             <div class="chart-wrapper">
               <canvas id="bucketsChart"></canvas>
             </div>
@@ -486,13 +560,13 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <button class="btn btn-success" onclick="exportCSV()">📊 خروجی CSV (برای اکسل)</button>
       </div>
       <div class="card">
-        <h2>️ ریست کامل</h2>
+        <h2>⚠️ ریست کامل</h2>
         <div class="reset-warning">
-          <h3>🚨 هشدار مهم!</h3>
+          <h3> هشدار مهم!</h3>
           <p>با زدن دکمه زیر، <strong>تمام داده‌های شما</strong> در فضای ابری برای همیشه حذف می‌شود.</p>
           <p style="margin-top: 10px; color: #991b1b;"><strong>این عمل قابل بازگشت نیست!</strong></p>
         </div>
-        <button class="btn btn-danger" onclick="resetAllData()">️ ریست کامل و شروع از صفر</button>
+        <button class="btn btn-danger" onclick="resetAllData()">🗑️ ریست کامل و شروع از صفر</button>
       </div>
     </section>
 
@@ -511,7 +585,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <label>تم:</label>
           <select id="themeSelect" onchange="changeTheme(this.value)">
             <option value="light">☀️ روشن</option>
-            <option value="dark">🌙 تاریک</option>
+            <option value="dark"> تاریک</option>
           </select>
         </div>
         <div class="theme-info">
@@ -519,8 +593,8 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         </div>
       </div>
       <div class="card">
-        <h2>📱 درباره اپلیکیشن</h2>
-        <p><strong>نسخه:</strong> ۲.۱.۰</p>
+        <h2> درباره اپلیکیشن</h2>
+        <p><strong>نسخه:</strong> ۲.۲.۰</p>
         <p><strong>ساخته شده با:</strong> ❤️</p>
         <p class="version-info">این اپلیکیشن به صورت Progressive Web App (PWA) طراحی شده و می‌توانید آن را روی گوشی خود نصب کنید.</p>
       </div>
@@ -562,8 +636,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const APP_VERSION = '2.1.0';
-const DATA_VERSION = 2;
+const APP_VERSION = '2.2.0';
+const DATA_VERSION = 3;
 
 let currentUser = null;
 let unsubscribe = null;
@@ -604,6 +678,43 @@ class JalaliDate {
     if (month > 12) { month = 1; year++; }
     return { year, month };
   }
+  static daysBetween(date1, date2) {
+    const d1 = JalaliDate.parse(date1);
+    const d2 = JalaliDate.parse(date2);
+    const g1 = JalaliDate.jalaliToGregorian(d1.year, d1.month, d1.day);
+    const g2 = JalaliDate.jalaliToGregorian(d2.year, d2.month, d2.day);
+    const date1Obj = new Date(g1[0], g1[1] - 1, g1[2]);
+    const date2Obj = new Date(g2[0], g2[1] - 1, g2[2]);
+    const diffTime = date2Obj - date1Obj;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  }
+  static jalaliToGregorian(jy, jm, jd) {
+    let gy = (jy <= 979) ? 621 : 1600;
+    jy -= (jy <= 979) ? 0 : 979;
+    let days = (365 * jy) + ((parseInt(jy / 33)) * 8) + (parseInt(((jy % 33) + 3) / 4)) + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+    gy += 400 * (parseInt(days / 146097));
+    days %= 146097;
+    if (days > 36524) {
+      gy += 100 * (parseInt(--days / 36524));
+      days %= 36524;
+      if (days >= 365) days++;
+    }
+    gy += 4 * (parseInt(days / 1461));
+    days %= 1461;
+    if (days > 365) {
+      gy += parseInt((days - 1) / 365);
+      days = (days - 1) % 365;
+    }
+    let gd = days + 1;
+    const sal_a = [0, 31, ((gy % 4 === 0 && gy % 100 !== 0) || (gy % 400 === 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let gm;
+    for (gm = 0; gm < 13; gm++) {
+      if (gd <= sal_a[gm]) break;
+      gd -= sal_a[gm];
+    }
+    return [gy, gm, gd];
+  }
 }
 
 class DataManager {
@@ -620,11 +731,13 @@ class DataManager {
         { id: 2, name: 'حساب خرجی', type: 'spending', balance: 0 }
       ],
       buckets: {
-        necessities: { amount: 0, percent: 50, name: 'ضروریات', icon: '🏠' },
-        debt: { amount: 0, percent: 20, name: 'بدهی', icon: '' },
+        necessities: { amount: 0, percent: 50, name: 'ضروریات', icon: '' },
+        debt: { amount: 0, percent: 20, name: 'بدهی', icon: '💳' },
         savings: { amount: 0, percent: 20, name: 'ذخیره', icon: '🏦' },
         reward: { amount: 0, percent: 10, name: 'پاداش', icon: '🎁' }
       },
+      budgets: {},
+      savingsGoals: [],
       transactions: [],
       installments: [],
       investments: [],
@@ -633,18 +746,16 @@ class DataManager {
   }
 
   migrateData(oldData) {
-    if (!oldData.version) {
-      oldData.version = 2;
-      if (!oldData.settings) {
-        oldData.settings = { reminderDays: 3 };
-      }
+    if (!oldData.version || oldData.version < 3) {
+      oldData.version = 3;
+      if (!oldData.settings) oldData.settings = { reminderDays: 3 };
+      if (!oldData.budgets) oldData.budgets = {};
+      if (!oldData.savingsGoals) oldData.savingsGoals = [];
     }
     return oldData;
   }
 
-  setUserId(userId) {
-    this.userId = userId;
-  }
+  setUserId(userId) { this.userId = userId; }
 
   async loadData() {
     if (!this.userId) return;
@@ -690,9 +801,7 @@ class DataManager {
     unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
         let data = docSnap.data();
-        if (data.version !== DATA_VERSION) {
-          data = this.migrateData(data);
-        }
+        if (data.version !== DATA_VERSION) data = this.migrateData(data);
         this.data = data;
         if (window.ui) window.ui.updateAll();
         updateSyncStatus('synced');
@@ -704,10 +813,7 @@ class DataManager {
   }
 
   stopRealtimeSync() {
-    if (unsubscribe) {
-      unsubscribe();
-      unsubscribe = null;
-    }
+    if (unsubscribe) { unsubscribe(); unsubscribe = null; }
   }
 
   async addAccount(name, type, balance) {
@@ -791,10 +897,76 @@ class DataManager {
     await this.saveData();
   }
 
+  async saveBudget(category, amount) {
+    this.data.budgets[category] = parseInt(amount);
+    await this.saveData();
+  }
+
+  async deleteBudget(category) {
+    delete this.data.budgets[category];
+    await this.saveData();
+  }
+
+  async addSavingsGoal(title, targetAmount, currentAmount, deadline) {
+    const goal = {
+      id: Date.now(),
+      title,
+      targetAmount: parseInt(targetAmount),
+      currentAmount: parseInt(currentAmount) || 0,
+      deadline: deadline || null,
+      createdAt: JalaliDate.today(),
+      deposits: []
+    };
+    this.data.savingsGoals.push(goal);
+    await this.saveData();
+    return goal;
+  }
+
+  async depositToGoal(goalId, amount) {
+    const goal = this.data.savingsGoals.find(g => g.id === goalId);
+    if (!goal) return false;
+    const deposit = {
+      id: Date.now(),
+      amount: parseInt(amount),
+      date: JalaliDate.today()
+    };
+    goal.deposits.push(deposit);
+    goal.currentAmount += deposit.amount;
+    await this.saveData();
+    return true;
+  }
+
+  async deleteSavingsGoal(goalId) {
+    this.data.savingsGoals = this.data.savingsGoals.filter(g => g.id !== goalId);
+    await this.saveData();
+  }
+
+  getBudgetStatus(category) {
+    const today = JalaliDate.parse(JalaliDate.today());
+    const transactions = this.getMonthTransactions(today.year, today.month);
+    const spent = transactions
+      .filter(t => t.type === 'expense' && t.category === category)
+      .reduce((sum, t) => sum + t.amount, 0);
+    const budget = this.data.budgets[category] || 0;
+    const percent = budget > 0 ? (spent / budget) * 100 : 0;
+    return { spent, budget, percent, remaining: budget - spent };
+  }
+
+  getAllBudgetsStatus() {
+    const categories = Object.keys(this.data.budgets);
+    return categories.map(cat => ({
+      category: cat,
+      ...this.getBudgetStatus(cat)
+    }));
+  }
+
   getTotalBalance() { return this.data.accounts.reduce((sum, acc) => sum + acc.balance, 0); }
   getTotalSavings() { return Object.values(this.data.buckets).reduce((sum, b) => sum + b.amount, 0); }
   getTotalInvestment() { return this.data.investments.reduce((sum, inv) => sum + inv.amount, 0); }
-  
+  getTotalGoalsProgress() { 
+    return this.data.savingsGoals.reduce((sum, g) => sum + g.currentAmount, 0); 
+  }
+
   getMonthTransactions(year, month) {
     return this.data.transactions.filter(t => {
       const date = JalaliDate.parse(t.date);
@@ -810,11 +982,7 @@ class DataManager {
       const transactions = this.getMonthTransactions(year, month);
       const income = transactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
       const expense = transactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
-      result.push({
-        label: `${JalaliDate.getMonthName(month)}`,
-        income,
-        expense
-      });
+      result.push({ label: JalaliDate.getMonthName(month), income, expense });
     }
     return result;
   }
@@ -825,20 +993,16 @@ class DataManager {
     const expenses = transactions.filter(t => t.type === 'expense');
     const categories = {};
     const categoryNames = { 
-      food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', 
+      food: '🍞 خوراک', transport: ' حمل‌ونقل', rent: '🏡 اجاره', 
       bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', 
-      shopping: '🛍️ خرید', health: '🏥 بهداشت', education: '📚 آموزش', 
+      shopping: '🛍️ خرید', health: ' بهداشت', education: '📚 آموزش', 
       investment: '💎 سرمایه‌گذاری', other: '📦 سایر' 
     };
-    
     expenses.forEach(t => {
       const cat = t.category || 'other';
-      if (!categories[cat]) {
-        categories[cat] = { name: categoryNames[cat] || cat, amount: 0 };
-      }
+      if (!categories[cat]) categories[cat] = { name: categoryNames[cat] || cat, amount: 0 };
       categories[cat].amount += t.amount;
     });
-    
     return Object.values(categories);
   }
 
@@ -885,13 +1049,11 @@ class UI {
         .then(() => console.log('Service Worker registered'))
         .catch(err => console.error('Service Worker registration failed:', err));
     }
-
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       document.getElementById('installBtn').style.display = 'inline-block';
     });
-
     window.addEventListener('appinstalled', () => {
       document.getElementById('installBtn').style.display = 'none';
       deferredPrompt = null;
@@ -908,7 +1070,6 @@ class UI {
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
     const select = document.getElementById('themeSelect');
-    
     if (theme === 'dark') {
       body.classList.add('dark-mode');
       if (toggle) toggle.textContent = '☀️';
@@ -918,9 +1079,7 @@ class UI {
       if (toggle) toggle.textContent = '';
       if (select) select.value = 'light';
     }
-    
     localStorage.setItem('theme', theme);
-    
     if (charts.expenseCategory || charts.incomeVsExpense || charts.balanceTrend || charts.buckets) {
       setTimeout(() => this.updateCharts(), 100);
     }
@@ -933,10 +1092,7 @@ class UI {
         document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
         e.target.classList.add('active');
         document.getElementById(e.target.dataset.tab).classList.add('active');
-        
-        if (e.target.dataset.tab === 'reports') {
-          setTimeout(() => this.updateCharts(), 100);
-        }
+        if (e.target.dataset.tab === 'reports') setTimeout(() => this.updateCharts(), 100);
       });
     });
   }
@@ -948,6 +1104,8 @@ class UI {
     document.getElementById('accountForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleAccount(); });
     document.getElementById('bucketWithdrawForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleBucketWithdraw(); });
     document.getElementById('investmentForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleInvestment(); });
+    document.getElementById('budgetForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleBudgetSave(); });
+    document.getElementById('goalForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleGoalAdd(); });
   }
 
   setupMoneyInputs() {
@@ -992,7 +1150,7 @@ class UI {
     const today = JalaliDate.today();
     const dateObj = JalaliDate.parse(today);
     const monthName = JalaliDate.getMonthName(dateObj.month);
-    document.getElementById('currentDate').textContent = `📅 ${today} - ${monthName} ${this.toPersianDigits(dateObj.year)}`;
+    document.getElementById('currentDate').textContent = ` ${today} - ${monthName} ${this.toPersianDigits(dateObj.year)}`;
   }
 
   updateAll() {
@@ -1002,6 +1160,8 @@ class UI {
     this.updateBuckets();
     this.updateInstallments();
     this.updateInvestments();
+    this.updateBudgets();
+    this.updateGoals();
     this.updateAlerts();
     this.updateSettings();
   }
@@ -1018,6 +1178,8 @@ class UI {
     document.getElementById('monthExpense').textContent = this.formatNumber(monthExpense);
     this.updateBucketsMini();
     this.updateUpcomingInstallments();
+    this.updateBudgetOverview();
+    this.updateGoalsOverview();
     this.updateRecentInvestments();
     this.updateRecentTransactions();
   }
@@ -1050,6 +1212,67 @@ class UI {
     `).join('');
   }
 
+  updateBudgetOverview() {
+    const container = document.getElementById('budgetOverview');
+    const budgets = this.dm.getAllBudgetsStatus();
+    if (budgets.length === 0) {
+      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💰</div><p>هنوز بودجه‌ای تعریف نشده. به تب "بودجه" برو و بودجه ماهانه تعریف کن.</p></div>';
+      return;
+    }
+    const categoryNames = { 
+      food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', 
+      bills: '📄 قبوض', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', 
+      health: ' بهداشت', education: '📚 آموزش', other: '📦 سایر' 
+    };
+    container.innerHTML = budgets.map(b => {
+      const percent = Math.min(b.percent, 100);
+      const progressClass = b.percent >= 100 ? 'danger' : b.percent >= 80 ? 'warning' : 'success';
+      const statusClass = b.percent >= 100 ? 'over' : b.percent >= 80 ? 'warning' : 'ok';
+      const statusText = b.percent >= 100 ? `️ ${this.toPersianDigits(Math.round(b.percent))}٪ - بیش از بودجه!` : 
+                         b.percent >= 80 ? `⚡ ${this.toPersianDigits(Math.round(b.percent))}٪ - نزدیک به سقف` : 
+                         `✅ ${this.toPersianDigits(Math.round(b.percent))}٪ - عالی`;
+      return `
+        <div class="budget-item">
+          <div class="budget-title">${categoryNames[b.category] || b.category}</div>
+          <div class="budget-details">
+            مصرف شده: ${this.formatNumber(b.spent)} تومان از ${this.formatNumber(b.budget)} تومان
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill ${progressClass}" style="width: ${percent}%"></div>
+          </div>
+          <div class="budget-status ${statusClass}">${statusText}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  updateGoalsOverview() {
+    const container = document.getElementById('goalsOverview');
+    const goals = this.dm.data.savingsGoals;
+    if (goals.length === 0) {
+      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🎯</div><p>هنوز هدفی تعریف نشده. به تب "اهداف" برو و هدف پس‌انداز تعریف کن.</p></div>';
+      return;
+    }
+    container.innerHTML = goals.slice(0, 3).map(goal => {
+      const percent = goal.targetAmount > 0 ? (goal.currentAmount / goal.targetAmount) * 100 : 0;
+      const progressClass = percent >= 100 ? 'success' : percent >= 50 ? 'warning' : '';
+      return `
+        <div class="goal-item">
+          <div class="goal-title">🎯 ${goal.title}</div>
+          <div class="goal-details">
+            ${this.formatNumber(goal.currentAmount)} از ${this.formatNumber(goal.targetAmount)} تومان
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill ${progressClass}" style="width: ${Math.min(percent, 100)}%"></div>
+          </div>
+          <div class="budget-status ${percent >= 100 ? 'ok' : ''}">
+            ${percent >= 100 ? ' هدف محقق شد!' : `${this.toPersianDigits(Math.round(percent))}٪ تکمیل شده`}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
   updateRecentInvestments() {
     const container = document.getElementById('recentInvestments');
     const recent = this.dm.data.investments.slice(-5).reverse();
@@ -1061,7 +1284,7 @@ class UI {
       const account = this.dm.data.accounts.find(a => a.id === inv.accountId);
       return `
         <div class="investment-item">
-          <div class="investment-title"> ${inv.fund}</div>
+          <div class="investment-title">💎 ${inv.fund}</div>
           <div class="investment-details">
             مبلغ: ${this.formatNumber(inv.amount)} تومان | تاریخ: ${inv.date} | از حساب: ${account ? account.name : 'نامشخص'}
             ${inv.description ? '| ' + inv.description : ''}
@@ -1078,7 +1301,7 @@ class UI {
       container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📭</div><p>هنوز تراکنشی ثبت نشده</p></div>';
       return;
     }
-    const categoryNames = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: '🏥 بهداشت', education: ' آموزش', investment: '💎 سرمایه‌گذاری', other: '📦 سایر' };
+    const categoryNames = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: '🏥 بهداشت', education: '📚 آموزش', investment: '💎 سرمایه‌گذاری', other: '📦 سایر' };
     container.innerHTML = recent.map(t => {
       const account = this.dm.data.accounts.find(a => a.id === t.accountId);
       const category = t.category ? categoryNames[t.category] || t.category : '';
@@ -1102,8 +1325,21 @@ class UI {
     if (upcomingSoon.length > 0) {
       alerts.push(`<div class="alert alert-warning">⚠️ شما ${this.toPersianDigits(upcomingSoon.length)} قسط در ۳ روز آینده دارید!</div>`);
     }
+    const budgets = this.dm.getAllBudgetsStatus();
+    const overBudget = budgets.filter(b => b.percent >= 100);
+    const nearBudget = budgets.filter(b => b.percent >= 80 && b.percent < 100);
+    if (overBudget.length > 0) {
+      alerts.push(`<div class="alert alert-error"> ${this.toPersianDigits(overBudget.length)} دسته از بودجه ماهانه رد شده!</div>`);
+    } else if (nearBudget.length > 0) {
+      alerts.push(`<div class="alert alert-warning">⚡ ${this.toPersianDigits(nearBudget.length)} دسته به سقف بودجه نزدیک شده!</div>`);
+    }
     if (this.dm.getTotalSavings() > 10000000) {
       alerts.push(`<div class="alert alert-success">✅ عالی! صندوق ذخیره شما در حال رشد است.</div>`);
+    }
+    const goals = this.dm.data.savingsGoals;
+    const completedGoals = goals.filter(g => g.currentAmount >= g.targetAmount);
+    if (completedGoals.length > 0) {
+      alerts.push(`<div class="alert alert-success"> ${this.toPersianDigits(completedGoals.length)} هدف پس‌انداز محقق شد!</div>`);
     }
     container.innerHTML = alerts.join('');
   }
@@ -1119,7 +1355,7 @@ class UI {
   updateAccountsList() {
     const container = document.getElementById('accountsList');
     if (this.dm.data.accounts.length === 0) {
-      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🏦</div><p>حسابی وجود ندارد</p></div>';
+      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon"></div><p>حسابی وجود ندارد</p></div>';
       return;
     }
     const typeNames = { buffer: 'حساب واسط (ضربه‌گیر)', spending: 'حساب خرجی', savings: 'حساب پس‌انداز', bank: 'حساب بانکی/کارت' };
@@ -1205,6 +1441,99 @@ class UI {
     }).join('');
   }
 
+  updateBudgets() {
+    const container = document.getElementById('budgetsList');
+    const budgets = this.dm.getAllBudgetsStatus();
+    const categoryNames = { 
+      food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', 
+      bills: '📄 قبوض', entertainment: ' تفریح', shopping: '🛍️ خرید', 
+      health: '🏥 بهداشت', education: '📚 آموزش', other: ' سایر' 
+    };
+    if (budgets.length === 0) {
+      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💰</div><p>هنوز بودجه‌ای تعریف نشده</p></div>';
+      return;
+    }
+    container.innerHTML = budgets.map(b => {
+      const percent = Math.min(b.percent, 100);
+      const progressClass = b.percent >= 100 ? 'danger' : b.percent >= 80 ? 'warning' : 'success';
+      const statusClass = b.percent >= 100 ? 'over' : b.percent >= 80 ? 'warning' : 'ok';
+      const statusText = b.percent >= 100 ? `⚠️ ${this.toPersianDigits(Math.round(b.percent))}٪ - بیش از بودجه! (${this.formatNumber(Math.abs(b.remaining))} تومان اضافه مصرف شده)` : 
+                         b.percent >= 80 ? `⚡ ${this.toPersianDigits(Math.round(b.percent))}٪ - نزدیک به سقف (فقط ${this.formatNumber(b.remaining)} تومان باقی مانده)` : 
+                         `✅ ${this.toPersianDigits(Math.round(b.percent))}٪ - عالی (${this.formatNumber(b.remaining)} تومان باقی مانده)`;
+      return `
+        <div class="budget-item">
+          <div class="budget-title">${categoryNames[b.category] || b.category}</div>
+          <div class="budget-details">
+            سقف بودجه: ${this.formatNumber(b.budget)} تومان | مصرف شده: ${this.formatNumber(b.spent)} تومان
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill ${progressClass}" style="width: ${percent}%"></div>
+          </div>
+          <div class="budget-status ${statusClass}">${statusText}</div>
+          <div class="budget-actions">
+            <button class="btn btn-danger btn-small" onclick="ui.deleteBudget('${b.category}')">حذف بودجه</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  updateGoals() {
+    const container = document.getElementById('goalsList');
+    const goals = this.dm.data.savingsGoals;
+    if (goals.length === 0) {
+      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🎯</div><p>هنوز هدفی تعریف نشده</p></div>';
+      return;
+    }
+    container.innerHTML = goals.map(goal => {
+      const percent = goal.targetAmount > 0 ? (goal.currentAmount / goal.targetAmount) * 100 : 0;
+      const progressClass = percent >= 100 ? 'success' : percent >= 50 ? 'warning' : '';
+      const remaining = goal.targetAmount - goal.currentAmount;
+      let calculationHtml = '';
+      if (goal.deposits.length > 0 && remaining > 0) {
+        const totalDeposits = goal.deposits.reduce((sum, d) => sum + d.amount, 0);
+        const avgPerMonth = totalDeposits / Math.max(goal.deposits.length, 1);
+        const monthsNeeded = Math.ceil(remaining / avgPerMonth);
+        calculationHtml = `<div class="goal-calculation">📊 با روند فعلی، حدود <strong>${this.toPersianDigits(monthsNeeded)} ماه</strong> دیگر به هدفت می‌رسی</div>`;
+      }
+      let deadlineHtml = '';
+      if (goal.deadline) {
+        const today = JalaliDate.today();
+        const daysLeft = JalaliDate.daysBetween(today, goal.deadline);
+        if (daysLeft > 0) {
+          deadlineHtml = `<div class="goal-deadline"> ${this.toPersianDigits(daysLeft)} روز تا deadline</div>`;
+        } else if (daysLeft < 0) {
+          deadlineHtml = `<div class="goal-deadline" style="color: #ef4444;">️ ${this.toPersianDigits(Math.abs(daysLeft))} روز از deadline گذشته</div>`;
+        } else {
+          deadlineHtml = `<div class="goal-deadline">📅 امروز deadline است!</div>`;
+        }
+      }
+      return `
+        <div class="goal-item">
+          <div class="goal-title"> ${goal.title}</div>
+          <div class="goal-details">
+            هدف: ${this.formatNumber(goal.targetAmount)} تومان | فعلی: ${this.formatNumber(goal.currentAmount)} تومان
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill ${progressClass}" style="width: ${Math.min(percent, 100)}%"></div>
+          </div>
+          <div class="budget-status ${percent >= 100 ? 'ok' : ''}">
+            ${percent >= 100 ? '🎉 هدف محقق شد!' : `${this.toPersianDigits(Math.round(percent))}٪ تکمیل شده - ${this.formatNumber(remaining)} تومان باقی مانده`}
+          </div>
+          ${deadlineHtml}
+          ${calculationHtml}
+          <div class="deposit-form">
+            <input type="text" class="money-input" id="depositAmount_${goal.id}" placeholder="مبلغ واریز (تومان)">
+            <button class="btn btn-success btn-small" onclick="ui.depositToGoal(${goal.id})">💰 واریز به هدف</button>
+          </div>
+          <div class="goal-actions">
+            <button class="btn btn-danger btn-small" onclick="ui.deleteGoal(${goal.id})">حذف هدف</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
   updateSettings() {
     document.getElementById('percentNecessities').value = this.dm.data.buckets.necessities.percent;
     document.getElementById('percentDebt').value = this.dm.data.buckets.debt.percent;
@@ -1216,23 +1545,18 @@ class UI {
     const isDark = document.body.classList.contains('dark-mode');
     const textColor = isDark ? '#e2e8f0' : '#333';
     const gridColor = isDark ? '#475569' : '#e0e0e0';
-    
     const chartDefaults = {
       color: textColor,
-      plugins: {
-        legend: { labels: { color: textColor, font: { family: 'Tahoma' } } }
-      },
+      plugins: { legend: { labels: { color: textColor, font: { family: 'Tahoma' } } } },
       scales: {
         x: { ticks: { color: textColor, font: { family: 'Tahoma' } }, grid: { color: gridColor } },
         y: { ticks: { color: textColor, font: { family: 'Tahoma' } }, grid: { color: gridColor } }
       }
     };
 
-    // نمودار ۱: توزیع هزینه‌ها
     const expenseData = this.dm.getExpenseByCategory();
     const ctx1 = document.getElementById('expenseCategoryChart');
     if (charts.expenseCategory) charts.expenseCategory.destroy();
-    
     if (expenseData.length === 0) {
       if (ctx1) {
         const ctx = ctx1.getContext('2d');
@@ -1255,14 +1579,11 @@ class UI {
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'bottom', labels: { color: textColor, font: { family: 'Tahoma', size: 12 } } }
-          }
+          plugins: { legend: { position: 'bottom', labels: { color: textColor, font: { family: 'Tahoma', size: 12 } } } }
         }
       });
     }
 
-    // نمودار ۲: درآمد vs هزینه
     const last6Months = this.dm.getLast6MonthsData();
     const ctx2 = document.getElementById('incomeVsExpenseChart');
     if (charts.incomeVsExpense) charts.incomeVsExpense.destroy();
@@ -1275,14 +1596,9 @@ class UI {
           { label: 'هزینه', data: last6Months.map(m => m.expense), backgroundColor: '#ef4444' }
         ]
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        ...chartDefaults
-      }
+      options: { responsive: true, maintainAspectRatio: false, ...chartDefaults }
     });
 
-    // نمودار ۳: روند موجودی
     const ctx3 = document.getElementById('balanceTrendChart');
     if (charts.balanceTrend) charts.balanceTrend.destroy();
     charts.balanceTrend = new Chart(ctx3, {
@@ -1293,9 +1609,7 @@ class UI {
           label: 'موجودی کل',
           data: last6Months.map((m, i) => {
             let balance = 0;
-            for (let j = 0; j <= i; j++) {
-              balance += last6Months[j].income - last6Months[j].expense;
-            }
+            for (let j = 0; j <= i; j++) balance += last6Months[j].income - last6Months[j].expense;
             return balance;
           }),
           borderColor: '#3b82f6',
@@ -1304,14 +1618,9 @@ class UI {
           tension: 0.4
         }]
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        ...chartDefaults
-      }
+      options: { responsive: true, maintainAspectRatio: false, ...chartDefaults }
     });
 
-    // نمودار ۴: سطل‌ها
     const buckets = this.dm.data.buckets;
     const ctx4 = document.getElementById('bucketsChart');
     if (charts.buckets) charts.buckets.destroy();
@@ -1327,9 +1636,7 @@ class UI {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'bottom', labels: { color: textColor, font: { family: 'Tahoma', size: 12 } } }
-        }
+        plugins: { legend: { position: 'bottom', labels: { color: textColor, font: { family: 'Tahoma', size: 12 } } } }
       }
     });
   }
@@ -1382,7 +1689,7 @@ class UI {
     await this.dm.addAccount(name, type, balance);
     showNotification('✅ حساب با موفقیت اضافه شد', 'success');
     document.getElementById('accountForm').reset();
-    document.getElementById('accountBalance').value = '';
+    document.getElementById('accountBalance').value = '۰';
   }
 
   async handleBucketWithdraw() {
@@ -1414,8 +1721,31 @@ class UI {
       document.getElementById('investmentForm').reset();
       document.getElementById('investmentDate').value = JalaliDate.today();
     } else {
-      showNotification(' ' + result.message, 'error');
+      showNotification('❌ ' + result.message, 'error');
     }
+  }
+
+  async handleBudgetSave() {
+    const category = document.getElementById('budgetCategory').value;
+    const amount = this.parseMoneyInput(document.getElementById('budgetAmount').value);
+    if (amount <= 0) { showNotification('لطفاً مبلغ معتبر وارد کنید', 'error'); return; }
+    await this.dm.saveBudget(category, amount);
+    showNotification('✅ بودجه با موفقیت ذخیره شد', 'success');
+    document.getElementById('budgetForm').reset();
+    this.updateAll();
+  }
+
+  async handleGoalAdd() {
+    const title = document.getElementById('goalTitle').value;
+    const targetAmount = this.parseMoneyInput(document.getElementById('goalTarget').value);
+    const currentAmount = this.parseMoneyInput(document.getElementById('goalCurrent').value);
+    const deadline = document.getElementById('goalDeadline').value;
+    if (!title || targetAmount <= 0) { showNotification('لطفاً اطلاعات معتبر وارد کنید', 'error'); return; }
+    await this.dm.addSavingsGoal(title, targetAmount, currentAmount, deadline);
+    showNotification('✅ هدف با موفقیت ایجاد شد', 'success');
+    document.getElementById('goalForm').reset();
+    document.getElementById('goalCurrent').value = '۰';
+    this.updateAll();
   }
 
   async payInstallment(id) {
@@ -1444,6 +1774,35 @@ class UI {
       showNotification('✅ حساب با موفقیت حذف شد', 'success');
     }
   }
+
+  async deleteBudget(category) {
+    if (confirm(`آیا مطمئن هستید که می‌خواهید بودجه ${category} را حذف کنید؟`)) {
+      await this.dm.deleteBudget(category);
+      showNotification('✅ بودجه حذف شد', 'success');
+      this.updateAll();
+    }
+  }
+
+  async depositToGoal(goalId) {
+    const input = document.getElementById(`depositAmount_${goalId}`);
+    const amount = this.parseMoneyInput(input.value);
+    if (amount <= 0) { showNotification('لطفاً مبلغ معتبر وارد کنید', 'error'); return; }
+    const success = await this.dm.depositToGoal(goalId, amount);
+    if (success) {
+      showNotification('✅ واریز به هدف با موفقیت انجام شد', 'success');
+      this.updateAll();
+    } else {
+      showNotification('❌ خطا در واریز', 'error');
+    }
+  }
+
+  async deleteGoal(goalId) {
+    if (confirm('آیا مطمئن هستید که می‌خواهید این هدف را حذف کنید؟')) {
+      await this.dm.deleteSavingsGoal(goalId);
+      showNotification('✅ هدف حذف شد', 'success');
+      this.updateAll();
+    }
+  }
 }
 
 const dm = new DataManager();
@@ -1455,7 +1814,7 @@ function updateSyncStatus(status) {
   el.className = 'sync-status ' + status;
   if (status === 'synced') el.textContent = '✅ سینک شده';
   else if (status === 'syncing') el.textContent = '⏳ در حال سینک...';
-  else if (status === 'error') el.textContent = '❌ خطا در سینک';
+  else if (status === 'error') el.textContent = ' خطا در سینک';
 }
 
 function showNotification(message, type = 'success') {
@@ -1500,47 +1859,28 @@ async function login() {
   const email = document.getElementById('loginEmail').value.trim();
   const password = document.getElementById('loginPassword').value;
   const alertDiv = document.getElementById('loginAlert');
-  
   if (!email || !password) {
     alertDiv.innerHTML = '<div class="alert alert-error">❌ لطفاً ایمیل و رمز عبور را وارد کنید</div>';
     return;
   }
-  
   try {
-    alertDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p> در حال ورود...</p></div>';
+    alertDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p>⏳ در حال ورود...</p></div>';
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     currentUser = userCredential.user;
     onLoginSuccess();
   } catch (error) {
     console.error("Login error:", error);
     let message = '❌ خطا در ورود';
-    
     switch(error.code) {
-      case 'auth/user-not-found':
-        message = '❌ کاربری با این ایمیل یافت نشد. لطفاً ابتدا ثبت‌نام کنید.';
-        break;
-      case 'auth/wrong-password':
-        message = '❌ رمز عبور اشتباه است. اگر رمز را فراموش کرده‌اید، از گزینه "فراموشی رمز عبور" استفاده کنید.';
-        break;
-      case 'auth/invalid-email':
-        message = '❌ فرمت ایمیل نامعتبر است';
-        break;
-      case 'auth/invalid-credential':
-        message = '❌ ایمیل یا رمز عبور اشتباه است';
-        break;
-      case 'auth/user-disabled':
-        message = '⚠️ این حساب غیرفعال شده است';
-        break;
-      case 'auth/too-many-requests':
-        message = '⚠️ تعداد تلاش‌ها زیاد بود. لطفاً چند دقیقه صبر کنید یا رمز عبور خود را تغییر دهید.';
-        break;
-      case 'auth/unauthorized-domain':
-        message = '️ این دامنه مجاز نیست. لطفاً از دامنه اصلی استفاده کنید.';
-        break;
-      default:
-        message = `❌ خطا: ${error.message || 'مشکل ناشناخته'}`;
+      case 'auth/user-not-found': message = '❌ کاربری با این ایمیل یافت نشد. لطفاً ابتدا ثبت‌نام کنید.'; break;
+      case 'auth/wrong-password': message = '❌ رمز عبور اشتباه است. اگر رمز را فراموش کرده‌اید، از گزینه "فراموشی رمز عبور" استفاده کنید.'; break;
+      case 'auth/invalid-email': message = '❌ فرمت ایمیل نامعتبر است'; break;
+      case 'auth/invalid-credential': message = '❌ ایمیل یا رمز عبور اشتباه است'; break;
+      case 'auth/user-disabled': message = '⚠️ این حساب غیرفعال شده است'; break;
+      case 'auth/too-many-requests': message = '⚠️ تعداد تلاش‌ها زیاد بود. لطفاً چند دقیقه صبر کنید یا رمز عبور خود را تغییر دهید.'; break;
+      case 'auth/unauthorized-domain': message = '⚠️ این دامنه مجاز نیست. لطفاً از دامنه اصلی استفاده کنید.'; break;
+      default: message = ` خطا: ${error.message || 'مشکل ناشناخته'}`;
     }
-    
     alertDiv.innerHTML = `<div class="alert alert-error">${message}</div>`;
   }
 }
@@ -1550,22 +1890,18 @@ async function register() {
   const password = document.getElementById('registerPassword').value;
   const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
   const alertDiv = document.getElementById('loginAlert');
-  
   if (!email || !password || !passwordConfirm) {
     alertDiv.innerHTML = '<div class="alert alert-error">❌ لطفاً تمام فیلدها را پر کنید</div>';
     return;
   }
-  
   if (password !== passwordConfirm) {
-    alertDiv.innerHTML = '<div class="alert alert-error">❌ رمز عبور و تکرار آن یکسان نیستند</div>';
+    alertDiv.innerHTML = '<div class="alert alert-error"> رمز عبور و تکرار آن یکسان نیستند</div>';
     return;
   }
-  
   if (password.length < 6) {
     alertDiv.innerHTML = '<div class="alert alert-error">❌ رمز عبور باید حداقل ۶ کاراکتر باشد</div>';
     return;
   }
-  
   try {
     alertDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p>⏳ در حال ثبت‌نام...</p></div>';
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -1574,7 +1910,7 @@ async function register() {
   } catch (error) {
     console.error(error);
     let message = '❌ خطا در ثبت‌نام';
-    if (error.code === 'auth/email-already-in-use') message = ' این ایمیل قبلاً ثبت شده است';
+    if (error.code === 'auth/email-already-in-use') message = '❌ این ایمیل قبلاً ثبت شده است';
     else if (error.code === 'auth/weak-password') message = '❌ رمز عبور ضعیف است (حداقل ۶ کاراکتر)';
     else if (error.code === 'auth/invalid-email') message = '❌ ایمیل نامعتبر است';
     alertDiv.innerHTML = `<div class="alert alert-error">${message}</div>`;
@@ -1584,49 +1920,30 @@ async function register() {
 async function resetPassword() {
   const email = document.getElementById('forgotEmail').value.trim();
   const alertDiv = document.getElementById('loginAlert');
-  
   if (!email) {
     alertDiv.innerHTML = '<div class="alert alert-error">❌ لطفاً ایمیل خود را وارد کنید</div>';
     return;
   }
-  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     alertDiv.innerHTML = '<div class="alert alert-error">❌ فرمت ایمیل صحیح نیست (مثال: name@email.com)</div>';
     return;
   }
-  
   try {
     alertDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p>⏳ در حال ارسال ایمیل...</p></div>';
     await sendPasswordResetEmail(auth, email);
-    alertDiv.innerHTML = `
-      <div class="alert alert-success">
-        ✅ ایمیل تغییر رمز ارسال شد!<br>
-        <small>لطفاً پوشه Inbox و Spam ایمیل ${email} را بررسی کنید.</small>
-      </div>
-    `;
+    alertDiv.innerHTML = `<div class="alert alert-success">✅ ایمیل تغییر رمز ارسال شد!<br><small>لطفاً پوشه Inbox و Spam ایمیل ${email} را بررسی کنید.</small></div>`;
     setTimeout(() => showLogin(), 3000);
   } catch (error) {
     console.error("Password reset error:", error);
-    let message = ' خطا در ارسال ایمیل';
-    
+    let message = '❌ خطا در ارسال ایمیل';
     switch(error.code) {
-      case 'auth/user-not-found':
-        message = '❌ این ایمیل در سیستم ثبت نشده است. لطفاً ابتدا ثبت‌نام کنید.';
-        break;
-      case 'auth/invalid-email':
-        message = ' فرمت ایمیل وارد شده نامعتبر است';
-        break;
-      case 'auth/too-many-requests':
-        message = '⚠️ تعداد درخواست‌ها زیاد است. لطفاً چند دقیقه صبر کنید و دوباره تلاش کنید.';
-        break;
-      case 'auth/unauthorized-domain':
-        message = '⚠️ این دامنه مجاز نیست. با پشتیبانی تماس بگیرید.';
-        break;
-      default:
-        message = `❌ خطا: ${error.message}`;
+      case 'auth/user-not-found': message = '❌ این ایمیل در سیستم ثبت نشده است. لطفاً ابتدا ثبت‌نام کنید.'; break;
+      case 'auth/invalid-email': message = ' فرمت ایمیل وارد شده نامعتبر است'; break;
+      case 'auth/too-many-requests': message = '⚠️ تعداد درخواست‌ها زیاد است. لطفاً چند دقیقه صبر کنید و دوباره تلاش کنید.'; break;
+      case 'auth/unauthorized-domain': message = '⚠️ این دامنه مجاز نیست. با پشتیبانی تماس بگیرید.'; break;
+      default: message = `❌ خطا: ${error.message}`;
     }
-    
     alertDiv.innerHTML = `<div class="alert alert-error">${message}</div>`;
   }
 }
@@ -1635,11 +1952,9 @@ async function onLoginSuccess() {
   document.getElementById('loginPage').style.display = 'none';
   document.getElementById('appPage').style.display = 'block';
   document.getElementById('userEmail').textContent = currentUser.email;
-  
   dm.setUserId(currentUser.uid);
   await dm.loadData();
   dm.startRealtimeSync();
-  
   ui = new UI(dm);
   ui.updateAll();
 }
@@ -1660,14 +1975,9 @@ async function installApp() {
     showNotification('این مرورگر از نصب اپلیکیشن پشتیبانی نمی‌کند. لطفاً از Chrome یا Safari استفاده کنید.', 'error');
     return;
   }
-  
   deferredPrompt.prompt();
   const { outcome } = await deferredPrompt.userChoice;
-  
-  if (outcome === 'accepted') {
-    showNotification('اپلیکیشن در حال نصب است...', 'success');
-  }
-  
+  if (outcome === 'accepted') showNotification('اپلیکیشن در حال نصب است...', 'success');
   deferredPrompt = null;
 }
 
