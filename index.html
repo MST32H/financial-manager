@@ -262,7 +262,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
     <header class="header">
       <div class="user-info">
         <span id="userEmail"></span>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم"></button>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم">🌙</button>
         <button class="install-btn" id="installBtn" onclick="installApp()" style="display: none;">📲 نصب</button>
         <button class="logout-btn" onclick="logout()">خروج</button>
       </div>
@@ -276,7 +276,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <button class="tab active" data-tab="dashboard">📊 داشبورد</button>
       <button class="tab" data-tab="income">💵 درآمد</button>
       <button class="tab" data-tab="expense">💳 هزینه</button>
-      <button class="tab" data-tab="budget">💰 بودجه</button>
+      <button class="tab" data-tab="budget"> بودجه</button>
       <button class="tab" data-tab="goals">🎯 اهداف</button>
       <button class="tab" data-tab="installments">📅 اقساط</button>
       <button class="tab" data-tab="investment">💎 سرمایه‌گذاری</button>
@@ -291,19 +291,19 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <div class="stat-card">
           <div class="stat-icon">💵</div>
           <div class="stat-label">موجودی حساب‌ها</div>
-          <div class="stat-value" id="totalBalance">۰</div>
+          <div class="stat-value" id="totalBalance"></div>
           <div class="stat-unit">تومان</div>
         </div>
         <div class="stat-card income-card">
           <div class="stat-icon">📈</div>
           <div class="stat-label">درآمد این ماه</div>
-          <div class="stat-value" id="monthIncome">۰</div>
+          <div class="stat-value" id="monthIncome"></div>
           <div class="stat-unit">تومان</div>
         </div>
         <div class="stat-card expense-card">
           <div class="stat-icon">📉</div>
           <div class="stat-label">هزینه این ماه</div>
-          <div class="stat-value" id="monthExpense">۰</div>
+          <div class="stat-value" id="monthExpense"></div>
           <div class="stat-unit">تومان</div>
         </div>
         <div class="stat-card savings-card">
@@ -313,9 +313,9 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <div class="stat-unit">تومان</div>
         </div>
         <div class="stat-card investment-card">
-          <div class="stat-icon"></div>
+          <div class="stat-icon">💎</div>
           <div class="stat-label">کل سرمایه‌گذاری</div>
-          <div class="stat-value" id="totalInvestment"></div>
+          <div class="stat-value" id="totalInvestment">۰</div>
           <div class="stat-unit">تومان</div>
         </div>
       </div>
@@ -335,15 +335,15 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <div id="budgetOverview"></div>
       </div>
       <div class="card">
-        <h3>🎯 اهداف پس‌انداز</h3>
+        <h3> اهداف پس‌انداز</h3>
         <div id="goalsOverview"></div>
       </div>
       <div class="card">
-        <h3>💎 آخرین سرمایه‌گذاری‌ها</h3>
+        <h3> آخرین سرمایه‌گذاری‌ها</h3>
         <div class="investment-list" id="recentInvestments"></div>
       </div>
       <div class="card">
-        <h3>📋 آخرین تراکنش‌ها</h3>
+        <h3> آخرین تراکنش‌ها</h3>
         <div class="recent-transactions" id="recentTransactions"></div>
       </div>
     </section>
@@ -352,7 +352,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <div class="card">
         <h2>💵 ثبت درآمد جدید</h2>
         <form id="incomeForm">
-          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="incomeAmount" class="money-input" required placeholder="مثلاً: ۵,۰۰,۰۰۰"></div>
+          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="incomeAmount" class="money-input" required placeholder="مثلاً: ۵,۰۰۰,۰۰۰"></div>
           <div class="form-group"><label>حساب مقصد:</label><select id="incomeAccount" required></select></div>
           <div class="form-group"><label>توضیحات:</label><input type="text" id="incomeDescription" placeholder="مثلاً: پروژه طراحی سایت"></div>
           <div class="form-group"><label>تاریخ:</label><input type="text" id="incomeDate" class="date-input" required placeholder="۴۰۳/۰۴/۱۵"></div>
@@ -366,18 +366,18 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <div class="card">
         <h2>💳 ثبت هزینه جدید</h2>
         <form id="expenseForm">
-          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="expenseAmount" class="money-input" required placeholder="مثلاً: ۵۰۰,۰۰۰"></div>
+          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="expenseAmount" class="money-input" required placeholder="مثلاً: ۵۰,۰۰۰"></div>
           <div class="form-group"><label>حساب مبدأ:</label><select id="expenseAccount" required></select></div>
           <div class="form-group"><label>دسته‌بندی:</label>
             <select id="expenseCategory" required>
               <option value="">انتخاب کنید...</option>
               <option value="food">🍞 خوراک</option>
-              <option value="transport">🚗 حمل‌ونقل</option>
+              <option value="transport"> حمل‌ونقل</option>
               <option value="rent">🏡 اجاره</option>
               <option value="bills">📄 قبوض</option>
               <option value="installment">💳 قسط</option>
               <option value="entertainment">🎬 تفریح</option>
-              <option value="shopping">🛍️ خرید</option>
+              <option value="shopping">️ خرید</option>
               <option value="health">🏥 بهداشت و درمان</option>
               <option value="education">📚 آموزش</option>
               <option value="investment">💎 سرمایه‌گذاری</option>
@@ -385,7 +385,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
             </select>
           </div>
           <div class="form-group"><label>توضیحات:</label><input type="text" id="expenseDescription" placeholder="مثلاً: خرید هفتگی"></div>
-          <div class="form-group"><label>تاریخ:</label><input type="text" id="expenseDate" class="date-input" required placeholder="۱۰۳/۰۴/۵"></div>
+          <div class="form-group"><label>تاریخ:</label><input type="text" id="expenseDate" class="date-input" required placeholder="۱۴۳/۰۴/۱"></div>
           <button type="submit" class="btn btn-primary">ثبت هزینه</button>
         </form>
       </div>
@@ -395,7 +395,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <div class="card">
         <h2>💰 تنظیم بودجه ماهانه</h2>
         <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
-          💡 برای هر دسته‌بندی یه سقف بودجه تعیین کن. وقتی به ۸۰٪ برسی هشدار می‌گیری و وقتی رد بشی هشدار قرمز می‌بینی.
+          💡 برای هر دسته‌بندی یه سقف بودجه تعیین کن. وقتی به ۰٪ برسی هشدار می‌گیری و وقتی رد بشی هشدار قرمز می‌بینی.
         </p>
         <form id="budgetForm">
           <div class="form-group"><label>دسته‌بندی:</label>
@@ -427,9 +427,9 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <h2>🎯 تعریف هدف پس‌انداز جدید</h2>
         <form id="goalForm">
           <div class="form-group"><label>عنوان هدف:</label><input type="text" id="goalTitle" required placeholder="مثلاً: خرید ماشین، سفر، خانه"></div>
-          <div class="form-group"><label>مبلغ هدف (تومان):</label><input type="text" id="goalTarget" class="money-input" required placeholder="مثلاً: ۵۰,۰۰۰,۰۰"></div>
-          <div class="form-group"><label>مبلغ فعلی پس‌انداز شده (تومان):</label><input type="text" id="goalCurrent" class="money-input" value="۰" placeholder="مثلاً: ۵۰,۰۰۰,۰۰۰"></div>
-          <div class="form-group"><label>تاریخ هدف (اختیاری):</label><input type="text" id="goalDeadline" class="date-input" placeholder="مثلاً: ۴۰۴/۱۲/۲۹"></div>
+          <div class="form-group"><label>مبلغ هدف (تومان):</label><input type="text" id="goalTarget" class="money-input" required placeholder="مثلاً: ۵۰,۰۰۰,۰۰۰"></div>
+          <div class="form-group"><label>مبلغ فعلی پس‌انداز شده (تومان):</label><input type="text" id="goalCurrent" class="money-input" value="۰" placeholder="مثلاً: ۵,۰۰۰,۰۰"></div>
+          <div class="form-group"><label>تاریخ هدف (اختیاری):</label><input type="text" id="goalDeadline" class="date-input" placeholder="مثلاً: ۱۴۰۴/۱۲/۲۹"></div>
           <button type="submit" class="btn btn-primary">ایجاد هدف</button>
         </form>
       </div>
@@ -446,13 +446,13 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <form id="installmentForm">
           <div class="form-group"><label>عنوان قسط:</label><input type="text" id="installmentTitle" required placeholder="مثلاً: وام خودرو"></div>
           <div class="form-group"><label>مبلغ هر قسط (تومان):</label><input type="text" id="installmentAmount" class="money-input" required placeholder="مثلاً: ۲,۰۰۰,۰۰۰"></div>
-          <div class="form-group"><label>تعداد اقساط:</label><input type="number" id="installmentCount" required min="1" placeholder="مثلاً: ۱۲"></div>
+          <div class="form-group"><label>تعداد اقساط:</label><input type="number" id="installmentCount" required min="1" placeholder="مثلاً: ۲"></div>
           <div class="form-group"><label>روز پرداخت هر ماه:</label><input type="number" id="installmentDay" required min="1" max="31" placeholder="مثلاً: ۱۵"></div>
           <button type="submit" class="btn btn-primary">ثبت قسط</button>
         </form>
       </div>
       <div class="card">
-        <h2> لیست اقساط فعال</h2>
+        <h2>📋 لیست اقساط فعال</h2>
         <div id="installmentsList"></div>
       </div>
     </section>
@@ -468,10 +468,10 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">⚠️ توجه: مبلغ سرمایه‌گذاری از حساب انتخابی کسر می‌شود</p>
         <form id="investmentForm">
           <div class="form-group"><label>نام صندوق/سرمایه‌گذاری:</label><input type="text" id="investmentFund" required placeholder="مثلاً: صندوق طلای ملت"></div>
-          <div class="form-group"><label>مبلغ واریزی (تومان):</label><input type="text" id="investmentAmount" class="money-input" required placeholder="مثلاً: ۱۰,۰۰۰,۰۰۰"></div>
+          <div class="form-group"><label>مبلغ واریزی (تومان):</label><input type="text" id="investmentAmount" class="money-input" required placeholder="مثلاً: ۰,۰۰۰,۰۰"></div>
           <div class="form-group"><label>از حساب:</label><select id="investmentAccount" required></select></div>
           <div class="form-group"><label>توضیحات:</label><input type="text" id="investmentDescription" placeholder="مثلاً: خرید واحد"></div>
-          <div class="form-group"><label>تاریخ:</label><input type="text" id="investmentDate" class="date-input" required placeholder="۱۴۳/۰۴/۱"></div>
+          <div class="form-group"><label>تاریخ:</label><input type="text" id="investmentDate" class="date-input" required placeholder="۱۴۰۳/۰۴/۱۵"></div>
           <button type="submit" class="btn btn-primary">ثبت سرمایه‌گذاری</button>
         </form>
       </div>
@@ -512,11 +512,11 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
             </select>
           </div>
           <div class="form-group"><label>موجودی اولیه (تومان):</label><input type="text" id="accountBalance" class="money-input" value="۰"></div>
-          <button type="submit" class="btn btn-primary">افزودن حساب</button>
+          <button type="button" class="btn btn-primary" onclick="ui.handleAccount()">افزودن حساب</button>
         </form>
       </div>
       <div class="card">
-        <h2>📋 حساب‌های شما</h2>
+        <h2> حساب‌های شما</h2>
         <div id="accountsList"></div>
       </div>
     </section>
@@ -526,7 +526,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <h2>📊 نمودارهای مالی</h2>
         <div class="charts-grid">
           <div class="chart-container">
-            <h3>🥧 توزیع هزینه‌ها بر اساس دسته</h3>
+            <h3> توزیع هزینه‌ها بر اساس دسته</h3>
             <div class="chart-wrapper">
               <canvas id="expenseCategoryChart"></canvas>
             </div>
@@ -546,7 +546,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
             </div>
           </div>
           <div class="chart-container">
-            <h3> وضعیت سطل‌ها</h3>
+            <h3>🪣 وضعیت سطل‌ها</h3>
             <div class="chart-wrapper">
               <canvas id="bucketsChart"></canvas>
             </div>
@@ -555,14 +555,14 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       </div>
 
       <div class="card">
-        <h2>💾 پشتیبان‌گیری</h2>
+        <h2> پشتیبان‌گیری</h2>
         <button class="btn btn-success" onclick="exportData()">📥 خروجی JSON (پشتیبان کامل)</button>
         <button class="btn btn-success" onclick="exportCSV()">📊 خروجی CSV (برای اکسل)</button>
       </div>
       <div class="card">
         <h2>⚠️ ریست کامل</h2>
         <div class="reset-warning">
-          <h3> هشدار مهم!</h3>
+          <h3>🚨 هشدار مهم!</h3>
           <p>با زدن دکمه زیر، <strong>تمام داده‌های شما</strong> در فضای ابری برای همیشه حذف می‌شود.</p>
           <p style="margin-top: 10px; color: #991b1b;"><strong>این عمل قابل بازگشت نیست!</strong></p>
         </div>
@@ -585,7 +585,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <label>تم:</label>
           <select id="themeSelect" onchange="changeTheme(this.value)">
             <option value="light">☀️ روشن</option>
-            <option value="dark"> تاریک</option>
+            <option value="dark">🌙 تاریک</option>
           </select>
         </div>
         <div class="theme-info">
@@ -593,7 +593,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         </div>
       </div>
       <div class="card">
-        <h2> درباره اپلیکیشن</h2>
+        <h2>📱 درباره اپلیکیشن</h2>
         <p><strong>نسخه:</strong> ۲.۲.۰</p>
         <p><strong>ساخته شده با:</strong> ❤️</p>
         <p class="version-info">این اپلیکیشن به صورت Progressive Web App (PWA) طراحی شده و می‌توانید آن را روی گوشی خود نصب کنید.</p>
@@ -731,8 +731,8 @@ class DataManager {
         { id: 2, name: 'حساب خرجی', type: 'spending', balance: 0 }
       ],
       buckets: {
-        necessities: { amount: 0, percent: 50, name: 'ضروریات', icon: '' },
-        debt: { amount: 0, percent: 20, name: 'بدهی', icon: '💳' },
+        necessities: { amount: 0, percent: 50, name: 'ضروریات', icon: '🏠' },
+        debt: { amount: 0, percent: 20, name: 'بدهی', icon: '' },
         savings: { amount: 0, percent: 20, name: 'ذخیره', icon: '🏦' },
         reward: { amount: 0, percent: 10, name: 'پاداش', icon: '🎁' }
       },
@@ -993,10 +993,10 @@ class DataManager {
     const expenses = transactions.filter(t => t.type === 'expense');
     const categories = {};
     const categoryNames = { 
-      food: '🍞 خوراک', transport: ' حمل‌ونقل', rent: '🏡 اجاره', 
-      bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', 
-      shopping: '🛍️ خرید', health: ' بهداشت', education: '📚 آموزش', 
-      investment: '💎 سرمایه‌گذاری', other: '📦 سایر' 
+      food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', 
+      bills: '📄 قبوض', installment: '💳 قسط', entertainment: ' تفریح', 
+      shopping: '️ خرید', health: '🏥 بهداشت', education: '📚 آموزش', 
+      investment: '💎 سرمایه‌گذاری', other: ' سایر' 
     };
     expenses.forEach(t => {
       const cat = t.category || 'other';
@@ -1029,6 +1029,8 @@ class DataManager {
 class UI {
   constructor(dataManager) { 
     this.dm = dataManager; 
+    this.formsSetup = false;
+    this.isSubmitting = false;
     this.init();
     window.ui = this;
   }
@@ -1076,7 +1078,7 @@ class UI {
       if (select) select.value = 'dark';
     } else {
       body.classList.remove('dark-mode');
-      if (toggle) toggle.textContent = '';
+      if (toggle) toggle.textContent = '🌙';
       if (select) select.value = 'light';
     }
     localStorage.setItem('theme', theme);
@@ -1098,10 +1100,12 @@ class UI {
   }
 
   setupForms() {
+    if (this.formsSetup) return;
+    this.formsSetup = true;
+    
     document.getElementById('incomeForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleIncome(); });
     document.getElementById('expenseForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleExpense(); });
     document.getElementById('installmentForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleInstallment(); });
-    document.getElementById('accountForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleAccount(); });
     document.getElementById('bucketWithdrawForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleBucketWithdraw(); });
     document.getElementById('investmentForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleInvestment(); });
     document.getElementById('budgetForm').addEventListener('submit', (e) => { e.preventDefault(); this.handleBudgetSave(); });
@@ -1150,7 +1154,7 @@ class UI {
     const today = JalaliDate.today();
     const dateObj = JalaliDate.parse(today);
     const monthName = JalaliDate.getMonthName(dateObj.month);
-    document.getElementById('currentDate').textContent = ` ${today} - ${monthName} ${this.toPersianDigits(dateObj.year)}`;
+    document.getElementById('currentDate').textContent = `📅 ${today} - ${monthName} ${this.toPersianDigits(dateObj.year)}`;
   }
 
   updateAll() {
@@ -1222,13 +1226,13 @@ class UI {
     const categoryNames = { 
       food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', 
       bills: '📄 قبوض', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', 
-      health: ' بهداشت', education: '📚 آموزش', other: '📦 سایر' 
+      health: '🏥 بهداشت', education: '📚 آموزش', other: ' سایر' 
     };
     container.innerHTML = budgets.map(b => {
       const percent = Math.min(b.percent, 100);
       const progressClass = b.percent >= 100 ? 'danger' : b.percent >= 80 ? 'warning' : 'success';
       const statusClass = b.percent >= 100 ? 'over' : b.percent >= 80 ? 'warning' : 'ok';
-      const statusText = b.percent >= 100 ? `️ ${this.toPersianDigits(Math.round(b.percent))}٪ - بیش از بودجه!` : 
+      const statusText = b.percent >= 100 ? `⚠️ ${this.toPersianDigits(Math.round(b.percent))}٪ - بیش از بودجه!` : 
                          b.percent >= 80 ? `⚡ ${this.toPersianDigits(Math.round(b.percent))}٪ - نزدیک به سقف` : 
                          `✅ ${this.toPersianDigits(Math.round(b.percent))}٪ - عالی`;
       return `
@@ -1266,7 +1270,7 @@ class UI {
             <div class="progress-fill ${progressClass}" style="width: ${Math.min(percent, 100)}%"></div>
           </div>
           <div class="budget-status ${percent >= 100 ? 'ok' : ''}">
-            ${percent >= 100 ? ' هدف محقق شد!' : `${this.toPersianDigits(Math.round(percent))}٪ تکمیل شده`}
+            ${percent >= 100 ? '🎉 هدف محقق شد!' : `${this.toPersianDigits(Math.round(percent))}٪ تکمیل شده`}
           </div>
         </div>
       `;
@@ -1301,7 +1305,7 @@ class UI {
       container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📭</div><p>هنوز تراکنشی ثبت نشده</p></div>';
       return;
     }
-    const categoryNames = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: '🏥 بهداشت', education: '📚 آموزش', investment: '💎 سرمایه‌گذاری', other: '📦 سایر' };
+    const categoryNames = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: ' اجاره', bills: ' قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: ' بهداشت', education: '📚 آموزش', investment: '💎 سرمایه‌گذاری', other: '📦 سایر' };
     container.innerHTML = recent.map(t => {
       const account = this.dm.data.accounts.find(a => a.id === t.accountId);
       const category = t.category ? categoryNames[t.category] || t.category : '';
@@ -1329,7 +1333,7 @@ class UI {
     const overBudget = budgets.filter(b => b.percent >= 100);
     const nearBudget = budgets.filter(b => b.percent >= 80 && b.percent < 100);
     if (overBudget.length > 0) {
-      alerts.push(`<div class="alert alert-error"> ${this.toPersianDigits(overBudget.length)} دسته از بودجه ماهانه رد شده!</div>`);
+      alerts.push(`<div class="alert alert-error">⚠️ ${this.toPersianDigits(overBudget.length)} دسته از بودجه ماهانه رد شده!</div>`);
     } else if (nearBudget.length > 0) {
       alerts.push(`<div class="alert alert-warning">⚡ ${this.toPersianDigits(nearBudget.length)} دسته به سقف بودجه نزدیک شده!</div>`);
     }
@@ -1339,7 +1343,7 @@ class UI {
     const goals = this.dm.data.savingsGoals;
     const completedGoals = goals.filter(g => g.currentAmount >= g.targetAmount);
     if (completedGoals.length > 0) {
-      alerts.push(`<div class="alert alert-success"> ${this.toPersianDigits(completedGoals.length)} هدف پس‌انداز محقق شد!</div>`);
+      alerts.push(`<div class="alert alert-success">🎉 ${this.toPersianDigits(completedGoals.length)} هدف پس‌انداز محقق شد!</div>`);
     }
     container.innerHTML = alerts.join('');
   }
@@ -1388,7 +1392,7 @@ class UI {
     const container = document.getElementById('installmentsList');
     const installments = this.dm.data.installments;
     if (installments.length === 0) {
-      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon"></div><p>قسطی ثبت نشده</p></div>';
+      container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div><p>قسطی ثبت نشده</p></div>';
       return;
     }
     container.innerHTML = installments.map(inst => {
@@ -1447,7 +1451,7 @@ class UI {
     const categoryNames = { 
       food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', 
       bills: '📄 قبوض', entertainment: ' تفریح', shopping: '🛍️ خرید', 
-      health: '🏥 بهداشت', education: '📚 آموزش', other: ' سایر' 
+      health: '🏥 بهداشت', education: '📚 آموزش', other: '📦 سایر' 
     };
     if (budgets.length === 0) {
       container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💰</div><p>هنوز بودجه‌ای تعریف نشده</p></div>';
@@ -1501,9 +1505,9 @@ class UI {
         const today = JalaliDate.today();
         const daysLeft = JalaliDate.daysBetween(today, goal.deadline);
         if (daysLeft > 0) {
-          deadlineHtml = `<div class="goal-deadline"> ${this.toPersianDigits(daysLeft)} روز تا deadline</div>`;
+          deadlineHtml = `<div class="goal-deadline">📅 ${this.toPersianDigits(daysLeft)} روز تا deadline</div>`;
         } else if (daysLeft < 0) {
-          deadlineHtml = `<div class="goal-deadline" style="color: #ef4444;">️ ${this.toPersianDigits(Math.abs(daysLeft))} روز از deadline گذشته</div>`;
+          deadlineHtml = `<div class="goal-deadline" style="color: #ef4444;">⚠️ ${this.toPersianDigits(Math.abs(daysLeft))} روز از deadline گذشته</div>`;
         } else {
           deadlineHtml = `<div class="goal-deadline">📅 امروز deadline است!</div>`;
         }
@@ -1518,7 +1522,7 @@ class UI {
             <div class="progress-fill ${progressClass}" style="width: ${Math.min(percent, 100)}%"></div>
           </div>
           <div class="budget-status ${percent >= 100 ? 'ok' : ''}">
-            ${percent >= 100 ? '🎉 هدف محقق شد!' : `${this.toPersianDigits(Math.round(percent))}٪ تکمیل شده - ${this.formatNumber(remaining)} تومان باقی مانده`}
+            ${percent >= 100 ? ' هدف محقق شد!' : `${this.toPersianDigits(Math.round(percent))}٪ تکمیل شده - ${this.formatNumber(remaining)} تومان باقی مانده`}
           </div>
           ${deadlineHtml}
           ${calculationHtml}
@@ -1682,14 +1686,22 @@ class UI {
   }
 
   async handleAccount() {
-    const name = document.getElementById('accountName').value;
-    const type = document.getElementById('accountType').value;
-    const balance = this.parseMoneyInput(document.getElementById('accountBalance').value);
-    if (!name) { showNotification('لطفاً نام حساب را وارد کنید', 'error'); return; }
-    await this.dm.addAccount(name, type, balance);
-    showNotification('✅ حساب با موفقیت اضافه شد', 'success');
-    document.getElementById('accountForm').reset();
-    document.getElementById('accountBalance').value = '۰';
+    if (this.isSubmitting) return;
+    this.isSubmitting = true;
+    
+    try {
+      const name = document.getElementById('accountName').value;
+      const type = document.getElementById('accountType').value;
+      const balance = this.parseMoneyInput(document.getElementById('accountBalance').value);
+      if (!name) { showNotification('لطفاً نام حساب را وارد کنید', 'error'); return; }
+      await this.dm.addAccount(name, type, balance);
+      showNotification('✅ حساب با موفقیت اضافه شد', 'success');
+      document.getElementById('accountForm').reset();
+      document.getElementById('accountBalance').value = '۰';
+      this.updateAll();
+    } finally {
+      this.isSubmitting = false;
+    }
   }
 
   async handleBucketWithdraw() {
@@ -1792,7 +1804,7 @@ class UI {
       showNotification('✅ واریز به هدف با موفقیت انجام شد', 'success');
       this.updateAll();
     } else {
-      showNotification('❌ خطا در واریز', 'error');
+      showNotification(' خطا در واریز', 'error');
     }
   }
 
@@ -1814,7 +1826,7 @@ function updateSyncStatus(status) {
   el.className = 'sync-status ' + status;
   if (status === 'synced') el.textContent = '✅ سینک شده';
   else if (status === 'syncing') el.textContent = '⏳ در حال سینک...';
-  else if (status === 'error') el.textContent = ' خطا در سینک';
+  else if (status === 'error') el.textContent = '❌ خطا در سینک';
 }
 
 function showNotification(message, type = 'success') {
@@ -1864,7 +1876,7 @@ async function login() {
     return;
   }
   try {
-    alertDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p>⏳ در حال ورود...</p></div>';
+    alertDiv.innerHTML = '<div class="loading"><div class="spinner"></div><p> در حال ورود...</p></div>';
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     currentUser = userCredential.user;
     onLoginSuccess();
@@ -1879,7 +1891,7 @@ async function login() {
       case 'auth/user-disabled': message = '⚠️ این حساب غیرفعال شده است'; break;
       case 'auth/too-many-requests': message = '⚠️ تعداد تلاش‌ها زیاد بود. لطفاً چند دقیقه صبر کنید یا رمز عبور خود را تغییر دهید.'; break;
       case 'auth/unauthorized-domain': message = '⚠️ این دامنه مجاز نیست. لطفاً از دامنه اصلی استفاده کنید.'; break;
-      default: message = ` خطا: ${error.message || 'مشکل ناشناخته'}`;
+      default: message = `❌ خطا: ${error.message || 'مشکل ناشناخته'}`;
     }
     alertDiv.innerHTML = `<div class="alert alert-error">${message}</div>`;
   }
@@ -1895,7 +1907,7 @@ async function register() {
     return;
   }
   if (password !== passwordConfirm) {
-    alertDiv.innerHTML = '<div class="alert alert-error"> رمز عبور و تکرار آن یکسان نیستند</div>';
+    alertDiv.innerHTML = '<div class="alert alert-error">❌ رمز عبور و تکرار آن یکسان نیستند</div>';
     return;
   }
   if (password.length < 6) {
@@ -1939,7 +1951,7 @@ async function resetPassword() {
     let message = '❌ خطا در ارسال ایمیل';
     switch(error.code) {
       case 'auth/user-not-found': message = '❌ این ایمیل در سیستم ثبت نشده است. لطفاً ابتدا ثبت‌نام کنید.'; break;
-      case 'auth/invalid-email': message = ' فرمت ایمیل وارد شده نامعتبر است'; break;
+      case 'auth/invalid-email': message = '❌ فرمت ایمیل وارد شده نامعتبر است'; break;
       case 'auth/too-many-requests': message = '⚠️ تعداد درخواست‌ها زیاد است. لطفاً چند دقیقه صبر کنید و دوباره تلاش کنید.'; break;
       case 'auth/unauthorized-domain': message = '⚠️ این دامنه مجاز نیست. با پشتیبانی تماس بگیرید.'; break;
       default: message = `❌ خطا: ${error.message}`;
