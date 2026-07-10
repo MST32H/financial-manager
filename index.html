@@ -189,7 +189,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
 <div class="container">
   <div id="loginPage" class="login-container">
     <h2>💰 مدیریت مالی حرفه‌ای</h2>
-    <p>نسخه ۴.۱.۵ - ورود اعداد با فرمت</p>
+    <p>نسخه ۴.۱.۶ - کامل و بدون مشکل</p>
     <div id="loginAlert"></div>
     <div id="loginForm">
       <div class="form-group"><label>ایمیل:</label><input type="email" id="loginEmail" placeholder="example@email.com" dir="ltr"></div>
@@ -217,18 +217,18 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
     <header class="header">
       <div class="user-info">
         <span id="userEmail"></span>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم"></button>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="تغییر تم">🌙</button>
         <button class="install-btn" id="installBtn" onclick="installApp()" style="display: none;">📲 نصب</button>
         <button class="logout-btn" onclick="logout()">خروج</button>
       </div>
       <h1>💰 مدیریت مالی حرفه‌ای</h1>
-      <p>نسخه ۴.۱.۵ - <span class="security-badge">🛡️ ایمن با پشتیبان خودکار</span></p>
+      <p>نسخه ۴.۱.۶ - <span class="security-badge">🛡️ ایمن با پشتیبان خودکار</span></p>
       <div class="date-display" id="currentDate"></div>
       <div class="sync-status synced" id="syncStatus">✅ سینک شده</div>
     </header>
 
     <nav class="tabs">
-      <button class="tab active" data-tab="dashboard">📊 داشبورد</button>
+      <button class="tab active" data-tab="dashboard"> داشبورد</button>
       <button class="tab" data-tab="income">💵 درآمد</button>
       <button class="tab" data-tab="expense">💳 هزینه</button>
       <button class="tab" data-tab="budget">💰 بودجه</button>
@@ -239,35 +239,35 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <button class="tab" data-tab="investment">💎 سرمایه‌گذاری</button>
       <button class="tab" data-tab="buckets">🪣 سطل‌ها</button>
       <button class="tab" data-tab="accounts">🏦 حساب‌ها</button>
-      <button class="tab" data-tab="reports"> گزارش‌ها</button>
-      <button class="tab" data-tab="security">🛡️ امنیت</button>
+      <button class="tab" data-tab="reports">📈 گزارش‌ها</button>
+      <button class="tab" data-tab="security">️ امنیت</button>
       <button class="tab" data-tab="settings">⚙️ تنظیمات</button>
     </nav>
 
     <section id="dashboard" class="content active">
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-icon">💵</div><div class="stat-label">موجودی حساب‌ها</div><div class="stat-value" id="totalBalance">۰</div><div class="stat-unit">تومان</div></div>
-        <div class="stat-card income-card"><div class="stat-icon">📈</div><div class="stat-label">درآمد این ماه</div><div class="stat-value" id="monthIncome">۰</div><div class="stat-unit">تومان</div></div>
+        <div class="stat-card income-card"><div class="stat-icon">📈</div><div class="stat-label">درآمد این ماه</div><div class="stat-value" id="monthIncome"></div><div class="stat-unit">تومان</div></div>
         <div class="stat-card expense-card"><div class="stat-icon">📉</div><div class="stat-label">هزینه این ماه</div><div class="stat-value" id="monthExpense">۰</div><div class="stat-unit">تومان</div></div>
         <div class="stat-card savings-card"><div class="stat-icon">🏦</div><div class="stat-label">پس‌انداز (سطل‌ها)</div><div class="stat-value" id="totalSavings">۰</div><div class="stat-unit">تومان</div></div>
         <div class="stat-card investment-card"><div class="stat-icon">💎</div><div class="stat-label">کل سرمایه‌گذاری</div><div class="stat-value" id="totalInvestment">۰</div><div class="stat-unit">تومان</div></div>
-        <div class="stat-card trash-card"><div class="stat-icon">🗑️</div><div class="stat-label">آیتم‌های حذف شده</div><div class="stat-value" id="trashCount">۰</div><div class="stat-unit">قابل بازیابی</div></div>
+        <div class="stat-card trash-card"><div class="stat-icon">🗑️</div><div class="stat-label">آیتم‌های حذف شده</div><div class="stat-value" id="trashCount"></div><div class="stat-unit">قابل بازیابی</div></div>
       </div>
       <div id="alertsContainer"></div>
       <div class="dashboard-grid">
         <div class="card"><h3>🪣 وضعیت سطل‌ها</h3><div class="buckets-mini" id="bucketsMini"></div></div>
-        <div class="card"><h3>📅 اقساط نزدیک</h3><div class="upcoming-installments" id="upcomingInstallments"></div></div>
+        <div class="card"><h3> اقساط نزدیک</h3><div class="upcoming-installments" id="upcomingInstallments"></div></div>
       </div>
       <div class="card"><h3>🔔 یادآوری‌ها</h3><div id="remindersOverview"></div></div>
-      <div class="card"><h3> وضعیت بودجه این ماه</h3><div id="budgetOverview"></div></div>
+      <div class="card"><h3>💰 وضعیت بودجه این ماه</h3><div id="budgetOverview"></div></div>
       <div class="card"><h3>🎯 اهداف پس‌انداز</h3><div id="goalsOverview"></div></div>
       <div class="card"><h3>💎 آخرین سرمایه‌گذاری‌ها</h3><div class="investment-list" id="recentInvestments"></div></div>
-      <div class="card"><h3>📋 آخرین تراکنش‌ها</h3><div class="recent-transactions" id="recentTransactions"></div></div>
+      <div class="card"><h3> آخرین تراکنش‌ها</h3><div class="recent-transactions" id="recentTransactions"></div></div>
     </section>
 
     <section id="income" class="content">
       <div class="card">
-        <h2>💵 ثبت درآمد جدید</h2>
+        <h2> ثبت درآمد جدید</h2>
         <form id="incomeForm">
           <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="incomeAmount" class="money-input" required placeholder="مثلاً: ۵,۰۰۰,۰۰۰"></div>
           <div class="form-group"><label>حساب مقصد:</label><select id="incomeAccount" required></select></div>
@@ -283,15 +283,15 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <div class="card">
         <h2>💳 ثبت هزینه جدید</h2>
         <form id="expenseForm">
-          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="expenseAmount" class="money-input" required placeholder="مثلاً: ۵۰,۰۰۰"></div>
+          <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="expenseAmount" class="money-input" required placeholder="مثلاً: ۰,۰۰۰"></div>
           <div class="form-group"><label>حساب مبدأ:</label><select id="expenseAccount" required></select></div>
           <div class="form-group"><label>دسته‌بندی:</label>
             <select id="expenseCategory" required>
               <option value="">انتخاب کنید...</option>
               <option value="food">🍞 خوراک</option><option value="transport">🚗 حمل‌ونقل</option>
-              <option value="rent">🏡 اجاره</option><option value="bills">📄 قبوض</option>
-              <option value="installment"> قسط</option><option value="entertainment">🎬 تفریح</option>
-              <option value="shopping">🛍️ خرید</option><option value="health">🏥 بهداشت</option>
+              <option value="rent">🏡 اجاره</option><option value="bills"> قبوض</option>
+              <option value="installment">💳 قسط</option><option value="entertainment">🎬 تفریح</option>
+              <option value="shopping">️ خرید</option><option value="health">🏥 بهداشت</option>
               <option value="education">📚 آموزش</option><option value="investment">💎 سرمایه‌گذاری</option>
               <option value="other">📦 سایر</option>
             </select>
@@ -309,9 +309,9 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
         <form id="budgetForm">
           <div class="form-group"><label>دسته‌بندی:</label>
             <select id="budgetCategory" required>
-              <option value="food"> خوراک</option><option value="transport">🚗 حمل‌ونقل</option>
-              <option value="rent">🏡 اجاره</option><option value="bills"> قبوض</option>
-              <option value="entertainment">🎬 تفریح</option><option value="shopping">🛍️ خرید</option>
+              <option value="food">🍞 خوراک</option><option value="transport">🚗 حمل‌ونقل</option>
+              <option value="rent">🏡 اجاره</option><option value="bills">📄 قبوض</option>
+              <option value="entertainment"> تفریح</option><option value="shopping">🛍️ خرید</option>
               <option value="health">🏥 بهداشت</option><option value="education">📚 آموزش</option>
               <option value="other">📦 سایر</option>
             </select>
@@ -334,7 +334,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <button type="submit" class="btn btn-primary">ایجاد هدف</button>
         </form>
       </div>
-      <div class="card"><h2> اهداف من</h2><div id="goalsList"></div></div>
+      <div class="card"><h2>🎯 اهداف من</h2><div id="goalsList"></div></div>
     </section>
 
     <section id="recurring" class="content">
@@ -350,8 +350,8 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <div class="form-group"><label>دسته‌بندی:</label>
             <select id="recurringCategory">
               <option value="">انتخاب کنید...</option>
-              <option value="food">🍞 خوراک</option><option value="transport">🚗 حمل‌ونقل</option>
-              <option value="rent"> اجاره</option><option value="bills">📄 قبوض</option>
+              <option value="food"> خوراک</option><option value="transport">🚗 حمل‌ونقل</option>
+              <option value="rent">🏡 اجاره</option><option value="bills"> قبوض</option>
               <option value="other">📦 سایر</option>
             </select>
           </div>
@@ -390,7 +390,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
 
     <section id="installments" class="content">
       <div class="card">
-        <h2>📅 ثبت قسط</h2>
+        <h2> ثبت قسط</h2>
         <form id="installmentForm">
           <div class="form-group"><label>عنوان:</label><input type="text" id="installmentTitle" required></div>
           <div class="form-group"><label>مبلغ هر قسط (تومان):</label><input type="text" id="installmentAmount" class="money-input" required></div>
@@ -399,17 +399,17 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <button type="submit" class="btn btn-primary">ثبت قسط</button>
         </form>
       </div>
-      <div class="card"><h2> لیست اقساط</h2><div id="installmentsList"></div></div>
+      <div class="card"><h2>📋 لیست اقساط</h2><div id="installmentsList"></div></div>
     </section>
 
     <section id="investment" class="content">
       <div class="investment-summary">
-        <div style="font-size: 24px;">💎 کل سرمایه‌گذاری</div>
+        <div style="font-size: 24px;"> کل سرمایه‌گذاری</div>
         <div class="investment-summary-value" id="investmentSummaryTotal">۰</div>
         <div>تومان</div>
       </div>
       <div class="card">
-        <h2>💎 ثبت سرمایه‌گذاری</h2>
+        <h2> ثبت سرمایه‌گذاری</h2>
         <form id="investmentForm">
           <div class="form-group"><label>نام صندوق:</label><input type="text" id="investmentFund" required></div>
           <div class="form-group"><label>مبلغ (تومان):</label><input type="text" id="investmentAmount" class="money-input" required></div>
@@ -423,7 +423,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
     </section>
 
     <section id="buckets" class="content">
-      <div class="card"><h2>🪣 مدیریت سطل‌ها</h2><div class="buckets-grid" id="bucketsGrid"></div></div>
+      <div class="card"><h2> مدیریت سطل‌ها</h2><div class="buckets-grid" id="bucketsGrid"></div></div>
       <div class="card">
         <h2>💸 برداشت از سطل</h2>
         <form id="bucketWithdrawForm">
@@ -438,7 +438,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
 
     <section id="accounts" class="content">
       <div class="card">
-        <h2>🏦 افزودن حساب</h2>
+        <h2> افزودن حساب</h2>
         <form id="accountForm">
           <div class="form-group"><label>نام حساب:</label><input type="text" id="accountName" required></div>
           <div class="form-group"><label>نوع:</label>
@@ -451,7 +451,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <button type="button" class="btn btn-primary" onclick="ui.handleAccount()">افزودن</button>
         </form>
       </div>
-      <div class="card"><h2> حساب‌های شما</h2><div id="accountsList"></div></div>
+      <div class="card"><h2>📋 حساب‌های شما</h2><div id="accountsList"></div></div>
     </section>
 
     <section id="reports" class="content">
@@ -462,22 +462,22 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <div class="chart-container"><h3>📊 درآمد vs هزینه</h3><div class="chart-wrapper"><canvas id="incomeVsExpenseChart"></canvas></div></div>
         </div>
         <div class="charts-grid" style="margin-top: 20px;">
-          <div class="chart-container"><h3> روند موجودی</h3><div class="chart-wrapper"><canvas id="balanceTrendChart"></canvas></div></div>
-          <div class="chart-container"><h3>🪣 وضعیت سطل‌ها</h3><div class="chart-wrapper"><canvas id="bucketsChart"></canvas></div></div>
+          <div class="chart-container"><h3>📈 روند موجودی</h3><div class="chart-wrapper"><canvas id="balanceTrendChart"></canvas></div></div>
+          <div class="chart-container"><h3> وضعیت سطل‌ها</h3><div class="chart-wrapper"><canvas id="bucketsChart"></canvas></div></div>
         </div>
       </div>
       <div class="card">
-        <h2> پشتیبان‌گیری</h2>
+        <h2>💾 پشتیبان‌گیری</h2>
         <button class="btn btn-success" onclick="exportData()">📥 خروجی JSON</button>
-        <button class="btn btn-success" onclick="exportCSV()">📊 خروجی CSV</button>
-        <button class="btn btn-info" onclick="createManualBackup()">💾 Backup دستی</button>
-        <button class="btn btn-warning" onclick="generateMonthlyReport()">📄 دانلود گزارش PDF</button>
+        <button class="btn btn-success" onclick="exportCSV()"> خروجی CSV</button>
+        <button class="btn btn-info" onclick="createManualBackup()"> Backup دستی</button>
+        <button class="btn btn-warning" onclick="generateMonthlyReport()"> دانلود گزارش PDF</button>
       </div>
     </section>
 
     <section id="security" class="content">
       <div class="card">
-        <h2>🛡️ مرکز امنیت</h2>
+        <h2>️ مرکز امنیت</h2>
         <div class="alert alert-success">
           ✅ <strong>داده‌های شما کاملاً ایمن هستند!</strong><br>
           <small>پشتیبان خودکار هر ۲۴ ساعت، سطل بازیابی ۳۰ روزه، و ثبت تمام فعالیت‌ها</small>
@@ -503,7 +503,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       <div class="card">
         <h2>💾 پشتیبان‌های خودکار</h2>
         <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
-          سیستم هر ۴ ساعت یک پشتیبان از داده‌های شما می‌گیرد. حداکثر ۷ پشتیبان نگهداری می‌شود.
+          سیستم هر ۲۴ ساعت یک پشتیبان از داده‌های شما می‌گیرد. حداکثر ۷ پشتیبان نگهداری می‌شود.
         </p>
         <div id="backupsList"></div>
       </div>
@@ -527,13 +527,13 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
           <label>برای تأیید، کلمه <strong>DELETE</strong> را به انگلیسی تایپ کنید:</label>
           <input type="text" id="resetConfirmText" placeholder="DELETE" dir="ltr">
         </div>
-        <button class="btn btn-danger" onclick="resetAllData()">️ ریست کامل و حذف همه چیز</button>
+        <button class="btn btn-danger" onclick="resetAllData()">🗑️ ریست کامل و حذف همه چیز</button>
       </div>
     </section>
 
     <section id="settings" class="content">
       <div class="card">
-        <h2>⚙️ تنظیمات سطل‌ها</h2>
+        <h2>️ تنظیمات سطل‌ها</h2>
         <div class="form-group"><label>درصد ضروریات:</label><input type="number" id="percentNecessities" value="50" min="0" max="100"></div>
         <div class="form-group"><label>درصد بدهی:</label><input type="number" id="percentDebt" value="20" min="0" max="100"></div>
         <div class="form-group"><label>درصد ذخیره:</label><input type="number" id="percentSavings" value="20" min="0" max="100"></div>
@@ -550,7 +550,7 @@ body { background: var(--bg-primary); min-height: 100vh; padding: 15px; color: v
       </div>
       <div class="card">
         <h2>📱 درباره اپلیکیشن</h2>
-        <p><strong>نسخه:</strong> .۱.۵ (ورود اعداد با فرمت)</p>
+        <p><strong>نسخه:</strong> ۴.۱.۶ (نسخه پایدار - کامل)</p>
         <p><strong>ساخته شده با:</strong> ❤️</p>
       </div>
     </section>
@@ -810,7 +810,16 @@ class DataManager {
   async payInstallment(id) { const i = this.data.installments.find(x => x.id === id); if (i && i.paidCount < i.totalCount) { i.paidCount++; if (i.paidCount >= i.totalCount) i.active = false; await this.addAuditLog('update', 'installment', `پرداخت قسط: ${i.title}`); await this.saveData(); return true; } return false; }
   async deleteInstallment(id) { const i = this.data.installments.find(x => x.id === id); if (!i) return false; await this.softDelete('installment', id, i, `قسط: ${i.title}`); this.data.installments = this.data.installments.filter(x => x.id !== id); await this.saveData(); return true; }
   
-  async addInvestment(fund, amount, accId, desc, date) { const a = this.data.accounts.find(x => x.id === accId); if (a && a.balance < amount) return { success: false, message: 'موجودی کافی نیست' }; const inv = { id: Date.now(), fund, amount: parseInt(amount), accountId: accId, description: desc, date, timestamp: Date.now() }; this.data.investments.push(inv); if (a) a.balance -= amount; await this.addTransaction('expense', amount, accId, 'investment', `سرمایه‌گذاری در ${fund}`, date); await this.addAuditLog('create', 'investment', `سرمایه‌گذاری: ${fund} - ${amount.toLocaleString()} تومان`); return { success: true, investment: inv }; }
+  async addInvestment(fund, amount, accId, desc, date) { 
+    const a = this.data.accounts.find(x => x.id === accId); 
+    if (a && a.balance < amount) return { success: false, message: 'موجودی کافی نیست' }; 
+    const inv = { id: Date.now(), fund, amount: parseInt(amount), accountId: accId, description: desc, date, timestamp: Date.now() }; 
+    this.data.investments.push(inv); 
+    // ✅ balance فقط توسط addTransaction کم می‌شود
+    await this.addTransaction('expense', amount, accId, 'investment', `سرمایه‌گذاری در ${fund}`, date); 
+    await this.addAuditLog('create', 'investment', `سرمایه‌گذاری: ${fund} - ${amount.toLocaleString()} تومان`); 
+    return { success: true, investment: inv }; 
+  }
   async deleteInvestment(id) { const i = this.data.investments.find(x => x.id === id); if (!i) return false; await this.softDelete('investment', id, i, `سرمایه‌گذاری: ${i.fund}`); this.data.investments = this.data.investments.filter(x => x.id !== id); await this.saveData(); return true; }
   
   async saveBudget(cat, amount) { this.data.budgets[cat] = parseInt(amount); await this.addAuditLog('update', 'budget', `بودجه: ${amount.toLocaleString()} تومان`); await this.saveData(); }
@@ -839,7 +848,7 @@ class DataManager {
   getTotalInvestment() { return this.data.investments.reduce((s,i) => s + i.amount, 0); }
   getMonthTransactions(y, m) { return this.data.transactions.filter(t => { const d = JalaliDate.parse(t.date); return d.year === y && d.month === m; }); }
   getLast6MonthsData() { const t = JalaliDate.parse(JalaliDate.today()); const r = []; for (let i = 5; i >= 0; i--) { let { year, month } = JalaliDate.getMonthRange(t.year, t.month - i); const tx = this.getMonthTransactions(year, month); r.push({ label: JalaliDate.getMonthName(month), income: tx.filter(x => x.type === 'income').reduce((s,x) => s+x.amount, 0), expense: tx.filter(x => x.type === 'expense').reduce((s,x) => s+x.amount, 0) }); } return r; }
-  getExpenseByCategory() { const t = JalaliDate.parse(JalaliDate.today()); const tx = this.getMonthTransactions(t.year, t.month); const cats = {}; const names = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: '🏥 بهداشت', education: '📚 آموزش', investment: '💎 سرمایه‌گذاری', other: '📦 سایر' }; tx.filter(x => x.type === 'expense').forEach(x => { const c = x.category || 'other'; if (!cats[c]) cats[c] = { name: names[c] || c, amount: 0 }; cats[c].amount += x.amount; }); return Object.values(cats); }
+  getExpenseByCategory() { const t = JalaliDate.parse(JalaliDate.today()); const tx = this.getMonthTransactions(t.year, t.month); const cats = {}; const names = { food: ' خوراک', transport: ' حمل‌ونقل', rent: ' اجاره', bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: ' بهداشت', education: '📚 آموزش', investment: '💎 سرمایه‌گذاری', other: '📦 سایر' }; tx.filter(x => x.type === 'expense').forEach(x => { const c = x.category || 'other'; if (!cats[c]) cats[c] = { name: names[c] || c, amount: 0 }; cats[c].amount += x.amount; }); return Object.values(cats); }
   getUpcomingInstallments() { const t = JalaliDate.parse(JalaliDate.today()); const u = []; this.data.installments.filter(i => i.active).forEach(i => { const r = i.totalCount - i.paidCount; if (r > 0) { let d = i.day - t.day; if (d < 0) d += 30; u.push({ ...i, daysUntil: d, remaining: r }); } }); return u.sort((a,b) => a.daysUntil - b.daysUntil); }
   
   async resetAll() {
@@ -885,7 +894,7 @@ class UI {
   
   // ✅ فرمت عدد با کاما و تبدیل به فارسی
   formatNumber(n) { 
-    if (n === null || n === undefined || isNaN(n)) return '۰';
+    if (n === null || n === undefined || isNaN(n)) return '';
     const num = typeof n === 'number' ? n : parseInt(n);
     if (isNaN(num)) return '';
     const formatted = num.toLocaleString('en-US');
@@ -934,23 +943,31 @@ class UI {
         const cursorPos = el.selectionStart;
         const oldLength = el.value.length;
         
-        // فرمت کردن مقدار
-        const formatted = this.formatMoneyForDisplay(el.value);
-        el.value = formatted;
+        // فقط اعداد (فارسی و انگلیسی) رو نگه دار
+        let cleaned = el.value.replace(/[^\d-۹]/g, '');
+        cleaned = this.toEnglishDigits(cleaned);
         
-        // محاسبه موقعیت جدید cursor
+        if (!cleaned) {
+          el.value = '';
+          return;
+        }
+        
+        const num = parseInt(cleaned);
+        if (isNaN(num)) return;
+        
+        // فرمت با کاما + تبدیل به فارسی
+        el.value = this.toPersianDigits(num.toLocaleString('en-US'));
+        
+        // تنظیم cursor
         const newLength = el.value.length;
         const diff = newLength - oldLength;
-        const newCursorPos = Math.max(0, cursorPos + diff);
-        
-        // قرار دادن cursor در موقعیت جدید
-        el.setSelectionRange(newCursorPos, newCursorPos);
+        el.setSelectionRange(Math.max(0, cursorPos + diff), Math.max(0, cursorPos + diff));
       });
     }); 
   }
   
   setupDateInputs() { document.querySelectorAll('.date-input').forEach(i => { if (!i.value) i.value = JalaliDate.today(); }); }
-  updateCurrentDate() { const t = JalaliDate.today(); const d = JalaliDate.parse(t); document.getElementById('currentDate').textContent = ` ${t} - ${JalaliDate.getMonthName(d.month)} ${this.toPersianDigits(d.year)}`; }
+  updateCurrentDate() { const t = JalaliDate.today(); const d = JalaliDate.parse(t); document.getElementById('currentDate').textContent = `📅 ${t} - ${JalaliDate.getMonthName(d.month)} ${this.toPersianDigits(d.year)}`; }
   
   async afterDataLoaded() {
     await this.dm.cleanExpiredTrash();
@@ -994,10 +1011,10 @@ class UI {
   updateRemindersOverview() { const c = document.getElementById('remindersOverview'); const r = this.dm.getReminders(); const cs = this.dm.getChecksSummary(); if (!r.length && !cs.totalPending) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✨</div><p>هیچ یادآوری در انتظاری نیست</p></div>'; return; } let h = ''; if (cs.received.length > 0 || cs.given.length > 0) { h += `<div class="budget-item"><div class="budget-title">💰 خلاصه چک‌ها</div><div class="budget-details">دریافتی: <span style="color:#10b981;font-weight:bold;">${this.formatNumber(cs.receivedTotal)} تومان</span><br>پرداختی: <span style="color:#ef4444;font-weight:bold;">${this.formatNumber(cs.givenTotal)} تومان</span></div></div>`; } h += r.map(x => { let pc='safe',tl=''; if (x.daysLeft===0){pc='urgent';tl='امروز';} else if (x.daysLeft<=3){pc='soon';tl=`${this.toPersianDigits(x.daysLeft)} روز دیگر`;} else {tl=`${this.toPersianDigits(x.daysLeft)} روز دیگر`;} return `<div class="budget-item"><div class="budget-title">${x.icon} ${x.title}</div><div class="budget-details">${x.detail}</div><div class="days-counter ${pc}">⏰ ${tl}</div></div>`; }).join(''); c.innerHTML = h; }
   updateBucketsMini() { document.getElementById('bucketsMini').innerHTML = Object.entries(this.dm.data.buckets).map(([k,b]) => `<div class="bucket-mini ${k}"><div class="bucket-mini-title">${b.icon} ${b.name}</div><div class="bucket-mini-amount">${this.formatNumber(b.amount)}</div></div>`).join(''); }
   updateUpcomingInstallments() { const c = document.getElementById('upcomingInstallments'); const u = this.dm.getUpcomingInstallments().slice(0,5); if (!u.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div><p>قسط نزدیکی نیست</p></div>'; return; } c.innerHTML = u.map(i => `<div class="installment-item"><div class="installment-title">${i.title}</div><div class="installment-details">مبلغ: ${this.formatNumber(i.amount)} | ${i.daysUntil===0?'<strong>امروز</strong>':`${this.toPersianDigits(i.daysUntil)} روز دیگر`} | مانده: ${this.toPersianDigits(i.remaining)} قسط</div></div>`).join(''); }
-  updateBudgetOverview() { const c = document.getElementById('budgetOverview'); const b = this.dm.getAllBudgetsStatus(); if (!b.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💰</div><p>بودجه‌ای تعریف نشده</p></div>'; return; } const n = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', bills: '📄 قبوض', entertainment: ' تفریح', shopping: '🛍️ خرید', health: '🏥 بهداشت', education: '📚 آموزش', other: ' سایر' }; c.innerHTML = b.map(x => { const p = Math.min(x.percent,100); const pc = x.percent>=100?'danger':x.percent>=80?'warning':'success'; const sc = x.percent>=100?'over':x.percent>=80?'warning':'ok'; const st = x.percent>=100?`⚠️ ${this.toPersianDigits(Math.round(x.percent))}٪ - بیش از بودجه`:x.percent>=80?`⚡ ${this.toPersianDigits(Math.round(x.percent))}٪ - نزدیک به سقف`:`✅ ${this.toPersianDigits(Math.round(x.percent))}٪`; return `<div class="budget-item"><div class="budget-title">${n[x.category]||x.category}</div><div class="budget-details">مصرف: ${this.formatNumber(x.spent)} از ${this.formatNumber(x.budget)}</div><div class="progress-bar"><div class="progress-fill ${pc}" style="width:${p}%"></div></div><div class="budget-status ${sc}">${st}</div></div>`; }).join(''); }
+  updateBudgetOverview() { const c = document.getElementById('budgetOverview'); const b = this.dm.getAllBudgetsStatus(); if (!b.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💰</div><p>بودجه‌ای تعریف نشده</p></div>'; return; } const n = { food: ' خوراک', transport: ' حمل‌ونقل', rent: ' اجاره', bills: '📄 قبوض', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: '🏥 بهداشت', education: ' آموزش', other: '📦 سایر' }; c.innerHTML = b.map(x => { const p = Math.min(x.percent,100); const pc = x.percent>=100?'danger':x.percent>=80?'warning':'success'; const sc = x.percent>=100?'over':x.percent>=80?'warning':'ok'; const st = x.percent>=100?`⚠️ ${this.toPersianDigits(Math.round(x.percent))}٪ - بیش از بودجه`:x.percent>=80?`⚡ ${this.toPersianDigits(Math.round(x.percent))}٪ - نزدیک به سقف`:`✅ ${this.toPersianDigits(Math.round(x.percent))}٪`; return `<div class="budget-item"><div class="budget-title">${n[x.category]||x.category}</div><div class="budget-details">مصرف: ${this.formatNumber(x.spent)} از ${this.formatNumber(x.budget)}</div><div class="progress-bar"><div class="progress-fill ${pc}" style="width:${p}%"></div></div><div class="budget-status ${sc}">${st}</div></div>`; }).join(''); }
   updateGoalsOverview() { const c = document.getElementById('goalsOverview'); const g = this.dm.data.savingsGoals; if (!g.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🎯</div><p>هدفی تعریف نشده</p></div>'; return; } c.innerHTML = g.slice(0,3).map(x => { const p = x.targetAmount>0?(x.currentAmount/x.targetAmount)*100:0; const pc = p>=100?'success':p>=50?'warning':''; return `<div class="goal-item"><div class="goal-title">🎯 ${x.title}</div><div class="goal-details">${this.formatNumber(x.currentAmount)} از ${this.formatNumber(x.targetAmount)}</div><div class="progress-bar"><div class="progress-fill ${pc}" style="width:${Math.min(p,100)}%"></div></div></div>`; }).join(''); }
-  updateRecentInvestments() { const c = document.getElementById('recentInvestments'); const r = this.dm.data.investments.slice(-5).reverse(); if (!r.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💎</div><p>سرمایه‌گذاری ثبت نشده</p></div>'; return; } c.innerHTML = r.map(i => { const a = this.dm.data.accounts.find(x => x.id === i.accountId); return `<div class="investment-item"><div class="investment-title">💎 ${i.fund}</div><div class="investment-details">مبلغ: ${this.formatNumber(i.amount)} | تاریخ: ${i.date} | حساب: ${a?a.name:'نامشخص'}</div></div>`; }).join(''); }
-  updateRecentTransactions() { const c = document.getElementById('recentTransactions'); const r = this.dm.data.transactions.slice(-10).reverse(); if (!r.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon"></div><p>تراکنشی ثبت نشده</p></div>'; return; } const n = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: '🏥 بهداشت', education: '📚 آموزش', investment: '💎 سرمایه‌گذاری', other: ' سایر' }; c.innerHTML = r.map(t => { const a = this.dm.data.accounts.find(x => x.id === t.accountId); const cat = t.category ? n[t.category]||t.category : ''; return `<div class="transaction-item"><div class="transaction-info"><div class="transaction-title">${t.description||(t.type==='income'?'درآمد':'هزینه')}</div><div class="transaction-details">${t.date} | ${a?a.name:''} ${cat?'| '+cat:''}</div></div><div class="transaction-amount ${t.type}">${t.type==='income'?'+':'-'}${this.formatNumber(t.amount)}</div></div>`; }).join(''); }
+  updateRecentInvestments() { const c = document.getElementById('recentInvestments'); const r = this.dm.data.investments.slice(-5).reverse(); if (!r.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon"></div><p>سرمایه‌گذاری ثبت نشده</p></div>'; return; } c.innerHTML = r.map(i => { const a = this.dm.data.accounts.find(x => x.id === i.accountId); return `<div class="investment-item"><div class="investment-title">💎 ${i.fund}</div><div class="investment-details">مبلغ: ${this.formatNumber(i.amount)} | تاریخ: ${i.date} | حساب: ${a?a.name:'نامشخص'}</div></div>`; }).join(''); }
+  updateRecentTransactions() { const c = document.getElementById('recentTransactions'); const r = this.dm.data.transactions.slice(-10).reverse(); if (!r.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📭</div><p>تراکنشی ثبت نشده</p></div>'; return; } const n = { food: ' خوراک', transport: ' حمل‌ونقل', rent: ' اجاره', bills: '📄 قبوض', installment: '💳 قسط', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: ' بهداشت', education: '📚 آموزش', investment: '💎 سرمایه‌گذاری', other: '📦 سایر' }; c.innerHTML = r.map(t => { const a = this.dm.data.accounts.find(x => x.id === t.accountId); const cat = t.category ? n[t.category]||t.category : ''; return `<div class="transaction-item"><div class="transaction-info"><div class="transaction-title">${t.description||(t.type==='income'?'درآمد':'هزینه')}</div><div class="transaction-details">${t.date} | ${a?a.name:''} ${cat?'| '+cat:''}</div></div><div class="transaction-amount ${t.type}">${t.type==='income'?'+':'-'}${this.formatNumber(t.amount)}</div></div>`; }).join(''); }
   updateRecurringList() { const c = document.getElementById('recurringList'); const r = this.dm.data.recurring; if (!r.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔁</div><p>تراکنش تکراری ثبت نشده</p></div>'; return; } const f = { daily: 'روزانه', weekly: 'هفتگی', monthly: 'ماهانه', yearly: 'سالانه' }; c.innerHTML = r.map(x => { const a = this.dm.data.accounts.find(y => y.id === x.accountId); const next = x.lastExecuted ? (x.frequency==='daily'?JalaliDate.addDays(x.lastExecuted,1):x.frequency==='weekly'?JalaliDate.addWeeks(x.lastExecuted,1):x.frequency==='monthly'?JalaliDate.addMonths(x.lastExecuted,1):JalaliDate.addYears(x.lastExecuted,1)) : x.startDate; const d = JalaliDate.daysBetween(JalaliDate.today(), next); let ts = d<=0?'<span style="color:#10b981;font-weight:bold;">⚡ آماده اجرا</span>':d<=7?`<span style="color:#f59e0b;font-weight:bold;">⏰ ${this.toPersianDigits(d)} روز دیگه</span>`:`${this.toPersianDigits(d)} روز دیگه`; return `<div class="recurring-item"><div class="recurring-title">${x.type==='income'?'💵':'💳'} ${x.title} <span class="recurring-frequency">${f[x.frequency]}</span></div><div class="recurring-details">مبلغ: ${this.formatNumber(x.amount)} | حساب: ${a?a.name:'حذف شده'}<br>اجرای بعدی: ${ts}</div><div class="recurring-actions"><button class="btn btn-danger btn-small" onclick="ui.deleteRecurring(${x.id})">حذف</button></div></div>`; }).join(''); }
   updateChecksList() {
     const today = JalaliDate.today();
@@ -1006,7 +1023,7 @@ class UI {
     const ch = this.dm.data.checks;
     const p = ch.filter(c => c.status === 'pending').sort((a,b) => JalaliDate.daysBetween(today, a.dueDate) - JalaliDate.daysBetween(today, b.dueDate));
     if (!p.length) { pc.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📝</div><p>چکی در انتظار نیست</p></div>'; }
-    else { pc.innerHTML = p.map(c => { const d = JalaliDate.daysBetween(today, c.dueDate); let cls='safe',tl=''; if (d<0){cls='urgent';tl=`${this.toPersianDigits(Math.abs(d))} روز گذشته!`;} else if (d===0){cls='urgent';tl=' امروز سررسید';} else if (d<=3){cls='soon';tl=`⚠️ ${d} روز دیگه`;} else if (d<=7){cls='soon';tl=`${this.toPersianDigits(d)} روز دیگه`;} else {tl=`${this.toPersianDigits(d)} روز دیگه`;} return `<div class="check-item ${c.type}"><div class="check-title">${c.type==='received'?' دریافت از ':'💸 پرداخت به '}${c.party} <span class="check-status-badge status-pending">در انتظار</span></div><div class="check-details">شماره: #${c.checkNumber} | بانک: ${c.bankName}<br>مبلغ: <strong>${this.formatNumber(c.amount)} تومان</strong><br><span class="days-counter ${cls}">${tl}</span></div><div class="check-actions"><button class="btn btn-success btn-small" onclick="ui.updateCheckStatus(${c.id},'passed')">✅ پاس شده</button><button class="btn btn-warning btn-small" onclick="ui.updateCheckStatus(${c.id},'bounced')">❌ برگشتی</button><button class="btn btn-danger btn-small" onclick="ui.deleteCheck(${c.id})">حذف</button></div></div>`; }).join(''); }
+    else { pc.innerHTML = p.map(c => { const d = JalaliDate.daysBetween(today, c.dueDate); let cls='safe',tl=''; if (d<0){cls='urgent';tl=`${this.toPersianDigits(Math.abs(d))} روز گذشته!`;} else if (d===0){cls='urgent';tl='🔥 امروز سررسید';} else if (d<=3){cls='soon';tl=`⚠️ ${d} روز دیگه`;} else if (d<=7){cls='soon';tl=`${this.toPersianDigits(d)} روز دیگه`;} else {tl=`${this.toPersianDigits(d)} روز دیگه`;} return `<div class="check-item ${c.type}"><div class="check-title">${c.type==='received'?'💰 دریافت از ':'💸 پرداخت به '}${c.party} <span class="check-status-badge status-pending">در انتظار</span></div><div class="check-details">شماره: #${c.checkNumber} | بانک: ${c.bankName}<br>مبلغ: <strong>${this.formatNumber(c.amount)} تومان</strong><br><span class="days-counter ${cls}">${tl}</span></div><div class="check-actions"><button class="btn btn-success btn-small" onclick="ui.updateCheckStatus(${c.id},'passed')">✅ پاس شده</button><button class="btn btn-warning btn-small" onclick="ui.updateCheckStatus(${c.id},'bounced')">❌ برگشتی</button><button class="btn btn-danger btn-small" onclick="ui.deleteCheck(${c.id})">حذف</button></div></div>`; }).join(''); }
     const sl = { pending: { label: 'در انتظار', badge: 'status-pending' }, passed: { label: 'پاس شده', badge: 'status-passed' }, bounced: { label: 'برگشتی', badge: 'status-bounced' } };
     if (!ch.length) { ac.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📝</div><p>چکی ثبت نشده</p></div>'; }
     else { ac.innerHTML = ch.slice().reverse().map(c => { const s = sl[c.status]; const cc = c.status !== 'passed'; return `<div class="check-item ${c.type}"><div class="check-title">${c.type==='received'?'💰 ':'💸 '}#${c.checkNumber} <span class="check-status-badge ${s.badge}">${s.label}</span></div><div class="check-details">${c.type==='received'?'دریافت از':'پرداخت به'}: ${c.party}<br>مبلغ: ${this.formatNumber(c.amount)} | بانک: ${c.bankName}<br>سررسید: ${c.dueDate}</div><div class="check-actions">${cc?`<button class="btn btn-success btn-small" onclick="ui.updateCheckStatus(${c.id},'passed')">✅ پاس شد</button>`:`<span class="badge badge-success">✅ ثبت شد</span>`}<button class="btn btn-danger btn-small" onclick="ui.deleteCheck(${c.id})">حذف</button></div></div>`; }).join(''); }
@@ -1016,7 +1033,7 @@ class UI {
     const c = document.getElementById('trashList');
     const tr = this.dm.data.trash;
     if (!tr.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🗑️</div><p>سطل بازیابی خالی است</p></div>'; return; }
-    const typeNames = { account: '🏦 حساب', transaction: '💰 تراکنش', installment: '📅 قسط', investment: '💎 سرمایه‌گذاری', goal: '🎯 هدف', recurring: '🔁 تکراری', check: '📝 چک' };
+    const typeNames = { account: '🏦 حساب', transaction: '💰 تراکنش', installment: '📅 قسط', investment: '💎 سرمایه‌گذاری', goal: '🎯 هدف', recurring: ' تکراری', check: ' چک' };
     c.innerHTML = `<div style="margin-bottom:15px;"><button class="btn btn-danger" onclick="ui.emptyTrash()">🗑️ تخلیه کامل سطل</button></div>` +
       tr.slice().reverse().map(x => {
         const daysLeft = Math.ceil((x.expiresAt - Date.now()) / (24*60*60*1000));
@@ -1055,7 +1072,7 @@ class UI {
     const c = document.getElementById('auditLogList');
     const l = this.dm.data.auditLog;
     if (!l.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📜</div><p>هنوز فعالیتی ثبت نشده</p></div>'; return; }
-    const actionNames = { create: '➕ ایجاد', update: '✏️ تغییر', delete: '🗑️ حذف', restore: '♻️ بازیابی', reset: '⚠️ ریست' };
+    const actionNames = { create: '➕ ایجاد', update: '✏️ تغییر', delete: '️ حذف', restore: '♻️ بازیابی', reset: '⚠️ ریست' };
     c.innerHTML = l.slice(0, 50).map(x => {
       const cls = x.action === 'create' ? 'log-create' : x.action === 'update' ? 'log-update' : x.action === 'delete' ? 'log-delete' : x.action === 'restore' ? 'log-restore' : 'log-reset';
       return `<div class="log-item">
@@ -1075,8 +1092,8 @@ class UI {
   updateBuckets() { document.getElementById('bucketsGrid').innerHTML = Object.entries(this.dm.data.buckets).map(([k,b]) => `<div class="bucket-card ${k}"><div class="bucket-title">${b.icon} ${b.name}</div><div class="bucket-amount">${this.formatNumber(b.amount)}</div><div class="bucket-percent">${this.toPersianDigits(b.percent)}٪ درآمد</div></div>`).join(''); document.getElementById('withdrawBucket').innerHTML = Object.entries(this.dm.data.buckets).map(([k,b]) => `<option value="${k}">${b.icon} ${b.name} (${this.formatNumber(b.amount)} تومان)</option>`).join(''); }
   updateInstallments() { const c = document.getElementById('installmentsList'); const i = this.dm.data.installments; if (!i.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div><p>قسطی ثبت نشده</p></div>'; return; } c.innerHTML = i.map(x => { const r = x.totalCount - x.paidCount; const p = (x.paidCount / x.totalCount) * 100; return `<div class="installment-item"><div class="installment-title">${x.title} ${x.active?'<span class="badge badge-warning">فعال</span>':'<span class="badge badge-success">تسویه</span>'}</div><div class="installment-details">مبلغ: ${this.formatNumber(x.amount)} | پرداخت: ${this.toPersianDigits(x.paidCount)} از ${this.toPersianDigits(x.totalCount)} | روز: ${this.toPersianDigits(x.day)}</div><div class="progress-bar"><div class="progress-fill" style="width:${p}%"></div></div><div class="installment-actions">${x.active?`<button class="btn btn-success btn-small" onclick="ui.payInstallment(${x.id})">✅ پرداخت</button>`:''}<button class="btn btn-danger btn-small" onclick="ui.deleteInstallment(${x.id})">حذف</button></div></div>`; }).join(''); }
   updateInvestments() { document.getElementById('investmentSummaryTotal').textContent = this.formatNumber(this.dm.getTotalInvestment()); const c = document.getElementById('investmentList'); const i = this.dm.data.investments; if (!i.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💎</div><p>سرمایه‌گذاری ثبت نشده</p></div>'; return; } c.innerHTML = i.slice().reverse().map(x => { const a = this.dm.data.accounts.find(y => y.id === x.accountId); return `<div class="investment-item"><div class="investment-title">💎 ${x.fund}</div><div class="investment-details">مبلغ: ${this.formatNumber(x.amount)} | تاریخ: ${x.date} | حساب: ${a?a.name:'نامشخص'}</div><div class="investment-actions"><button class="btn btn-danger btn-small" onclick="ui.deleteInvestment(${x.id})">حذف</button></div></div>`; }).join(''); }
-  updateBudgets() { const c = document.getElementById('budgetsList'); const b = this.dm.getAllBudgetsStatus(); const n = { food: '🍞 خوراک', transport: ' حمل‌ونقل', rent: ' اجاره', bills: '📄 قبوض', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: ' بهداشت', education: '📚 آموزش', other: '📦 سایر' }; if (!b.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💰</div><p>بودجه‌ای تعریف نشده</p></div>'; return; } c.innerHTML = b.map(x => { const p = Math.min(x.percent,100); const pc = x.percent>=100?'danger':x.percent>=80?'warning':'success'; const sc = x.percent>=100?'over':x.percent>=80?'warning':'ok'; const st = x.percent>=100?`⚠️ ${this.toPersianDigits(Math.round(x.percent))}٪ - بیش از بودجه!`:x.percent>=80?`⚡ ${this.toPersianDigits(Math.round(x.percent))}٪ - نزدیک به سقف`:`✅ ${this.toPersianDigits(Math.round(x.percent))}٪ (${this.formatNumber(x.remaining)} باقی)`; return `<div class="budget-item"><div class="budget-title">${n[x.category]||x.category}</div><div class="budget-details">سقف: ${this.formatNumber(x.budget)} | مصرف: ${this.formatNumber(x.spent)}</div><div class="progress-bar"><div class="progress-fill ${pc}" style="width:${p}%"></div></div><div class="budget-status ${sc}">${st}</div><div class="budget-actions"><button class="btn btn-danger btn-small" onclick="ui.deleteBudget('${x.category}')">حذف</button></div></div>`; }).join(''); }
-  updateGoals() { const c = document.getElementById('goalsList'); const g = this.dm.data.savingsGoals; if (!g.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🎯</div><p>هدفی تعریف نشده</p></div>'; return; } c.innerHTML = g.map(x => { const p = x.targetAmount>0?(x.currentAmount/x.targetAmount)*100:0; const pc = p>=100?'success':p>=50?'warning':''; const r = x.targetAmount - x.currentAmount; let calc = ''; if (x.deposits.length > 0 && r > 0) { const td = x.deposits.reduce((s,d)=>s+d.amount,0); const mn = Math.ceil(r / Math.max(td/Math.max(x.deposits.length,1),1)); calc = `<div class="backup-info" style="border-color:#8b5cf6;">📊 با روند فعلی حدود ${this.toPersianDigits(mn)} ماه دیگه می‌رسی</div>`; } let dl = ''; if (x.deadline) { const t = JalaliDate.today(); const d = JalaliDate.daysBetween(t, x.deadline); if (d>0) dl = `<div class="goal-deadline"> ${this.toPersianDigits(d)} روز تا deadline</div>`; else if (d<0) dl = `<div class="goal-deadline" style="color:#ef4444;">️ ${this.toPersianDigits(Math.abs(d))} روز از deadline گذشته</div>`; else dl = `<div class="goal-deadline"> امروز deadline!</div>`; } return `<div class="goal-item"><div class="goal-title">🎯 ${x.title}</div><div class="goal-details">هدف: ${this.formatNumber(x.targetAmount)} | فعلی: ${this.formatNumber(x.currentAmount)}</div><div class="progress-bar"><div class="progress-fill ${pc}" style="width:${Math.min(p,100)}%"></div></div><div class="budget-status ${p>=100?'ok':''}">${p>=100?'🎉 محقق شد!':`${this.toPersianDigits(Math.round(p))}٪ تکمیل - ${this.formatNumber(r)} باقی`}</div>${dl}${calc}<div class="deposit-form"><input type="text" class="money-input" id="depositAmount_${x.id}" placeholder="مبلغ واریز"><button class="btn btn-success btn-small" onclick="ui.depositToGoal(${x.id})"> واریز</button></div><div class="goal-actions"><button class="btn btn-danger btn-small" onclick="ui.deleteGoal(${x.id})">حذف</button></div></div>`; }).join(''); }
+  updateBudgets() { const c = document.getElementById('budgetsList'); const b = this.dm.getAllBudgetsStatus(); const n = { food: '🍞 خوراک', transport: '🚗 حمل‌ونقل', rent: '🏡 اجاره', bills: '📄 قبوض', entertainment: '🎬 تفریح', shopping: '🛍️ خرید', health: ' بهداشت', education: '📚 آموزش', other: '📦 سایر' }; if (!b.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💰</div><p>بودجه‌ای تعریف نشده</p></div>'; return; } c.innerHTML = b.map(x => { const p = Math.min(x.percent,100); const pc = x.percent>=100?'danger':x.percent>=80?'warning':'success'; const sc = x.percent>=100?'over':x.percent>=80?'warning':'ok'; const st = x.percent>=100?`⚠️ ${this.toPersianDigits(Math.round(x.percent))}٪ - بیش از بودجه!`:x.percent>=80?`⚡ ${this.toPersianDigits(Math.round(x.percent))}٪ - نزدیک به سقف`:`✅ ${this.toPersianDigits(Math.round(x.percent))}٪ (${this.formatNumber(x.remaining)} باقی)`; return `<div class="budget-item"><div class="budget-title">${n[x.category]||x.category}</div><div class="budget-details">سقف: ${this.formatNumber(x.budget)} | مصرف: ${this.formatNumber(x.spent)}</div><div class="progress-bar"><div class="progress-fill ${pc}" style="width:${p}%"></div></div><div class="budget-status ${sc}">${st}</div><div class="budget-actions"><button class="btn btn-danger btn-small" onclick="ui.deleteBudget('${x.category}')">حذف</button></div></div>`; }).join(''); }
+  updateGoals() { const c = document.getElementById('goalsList'); const g = this.dm.data.savingsGoals; if (!g.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon"></div><p>هدفی تعریف نشده</p></div>'; return; } c.innerHTML = g.map(x => { const p = x.targetAmount>0?(x.currentAmount/x.targetAmount)*100:0; const pc = p>=100?'success':p>=50?'warning':''; const r = x.targetAmount - x.currentAmount; let calc = ''; if (x.deposits.length > 0 && r > 0) { const td = x.deposits.reduce((s,d)=>s+d.amount,0); const mn = Math.ceil(r / Math.max(td/Math.max(x.deposits.length,1),1)); calc = `<div class="backup-info" style="border-color:#8b5cf6;">📊 با روند فعلی حدود ${this.toPersianDigits(mn)} ماه دیگه می‌رسی</div>`; } let dl = ''; if (x.deadline) { const t = JalaliDate.today(); const d = JalaliDate.daysBetween(t, x.deadline); if (d>0) dl = `<div class="goal-deadline">📅 ${this.toPersianDigits(d)} روز تا deadline</div>`; else if (d<0) dl = `<div class="goal-deadline" style="color:#ef4444;">⚠️ ${this.toPersianDigits(Math.abs(d))} روز از deadline گذشته</div>`; else dl = `<div class="goal-deadline">📅 امروز deadline!</div>`; } return `<div class="goal-item"><div class="goal-title"> ${x.title}</div><div class="goal-details">هدف: ${this.formatNumber(x.targetAmount)} | فعلی: ${this.formatNumber(x.currentAmount)}</div><div class="progress-bar"><div class="progress-fill ${pc}" style="width:${Math.min(p,100)}%"></div></div><div class="budget-status ${p>=100?'ok':''}">${p>=100?'🎉 محقق شد!':`${this.toPersianDigits(Math.round(p))}٪ تکمیل - ${this.formatNumber(r)} باقی`}</div>${dl}${calc}<div class="deposit-form"><input type="text" class="money-input" id="depositAmount_${x.id}" placeholder="مبلغ واریز"><button class="btn btn-success btn-small" onclick="ui.depositToGoal(${x.id})">💰 واریز</button></div><div class="goal-actions"><button class="btn btn-danger btn-small" onclick="ui.deleteGoal(${x.id})">حذف</button></div></div>`; }).join(''); }
   updateSettings() { document.getElementById('percentNecessities').value = this.dm.data.buckets.necessities.percent; document.getElementById('percentDebt').value = this.dm.data.buckets.debt.percent; document.getElementById('percentSavings').value = this.dm.data.buckets.savings.percent; document.getElementById('percentReward').value = this.dm.data.buckets.reward.percent; }
   updateCharts() {
     const d = document.body.classList.contains('dark-mode');
@@ -1180,7 +1197,7 @@ class UI {
 const dm = new DataManager();
 let ui;
 
-function updateSyncStatus(s) { const e = document.getElementById('syncStatus'); if (!e) return; e.className = 'sync-status ' + s; if (s === 'synced') e.textContent = '✅ سینک شده'; else if (s === 'syncing') e.textContent = ' در حال سینک...'; else e.textContent = '❌ خطا'; }
+function updateSyncStatus(s) { const e = document.getElementById('syncStatus'); if (!e) return; e.className = 'sync-status ' + s; if (s === 'synced') e.textContent = '✅ سینک شده'; else if (s === 'syncing') e.textContent = '⏳ در حال سینک...'; else e.textContent = '❌ خطا'; }
 function showNotification(m, t = 'success') { const n = document.getElementById('notification'); n.textContent = m; n.className = `notification show ${t}`; setTimeout(() => n.classList.remove('show'), 3500); }
 function toggleTheme() { const d = document.body.classList.contains('dark-mode'); if (window.ui) window.ui.applyTheme(d ? 'light' : 'dark'); }
 function changeTheme(t) { if (window.ui) window.ui.applyTheme(t); }
@@ -1188,9 +1205,9 @@ function showLogin() { document.getElementById('loginForm').style.display = 'blo
 function showRegister() { document.getElementById('loginForm').style.display = 'none'; document.getElementById('registerForm').style.display = 'block'; document.getElementById('forgotPasswordForm').style.display = 'none'; document.getElementById('loginAlert').innerHTML = ''; }
 function showForgotPassword() { document.getElementById('loginForm').style.display = 'none'; document.getElementById('registerForm').style.display = 'none'; document.getElementById('forgotPasswordForm').style.display = 'block'; document.getElementById('loginAlert').innerHTML = ''; }
 
-async function login() { const e = document.getElementById('loginEmail').value.trim(); const p = document.getElementById('loginPassword').value; const a = document.getElementById('loginAlert'); if (!e || !p) { a.innerHTML = '<div class="alert alert-error">❌ ایمیل و رمز را وارد کنید</div>'; return; } try { a.innerHTML = '<div class="loading"><div class="spinner"></div><p>⏳ در حال ورود...</p></div>'; const c = await signInWithEmailAndPassword(auth, e, p); currentUser = c.user; onLoginSuccess(); } catch (e) { console.error(e); let m = '❌ خطا در ورود'; if (e.code === 'auth/user-not-found') m = '❌ کاربری با این ایمیل نیست'; else if (e.code === 'auth/wrong-password') m = '❌ رمز اشتباه'; else if (e.code === 'auth/invalid-credential') m = '❌ ایمیل یا رمز اشتباه'; else m = `❌ ${e.message || 'خطا'}`; a.innerHTML = `<div class="alert alert-error">${m}</div>`; } }
+async function login() { const e = document.getElementById('loginEmail').value.trim(); const p = document.getElementById('loginPassword').value; const a = document.getElementById('loginAlert'); if (!e || !p) { a.innerHTML = '<div class="alert alert-error">❌ ایمیل و رمز را وارد کنید</div>'; return; } try { a.innerHTML = '<div class="loading"><div class="spinner"></div><p> در حال ورود...</p></div>'; const c = await signInWithEmailAndPassword(auth, e, p); currentUser = c.user; onLoginSuccess(); } catch (e) { console.error(e); let m = '❌ خطا در ورود'; if (e.code === 'auth/user-not-found') m = '❌ کاربری با این ایمیل نیست'; else if (e.code === 'auth/wrong-password') m = '❌ رمز اشتباه'; else if (e.code === 'auth/invalid-credential') m = '❌ ایمیل یا رمز اشتباه'; else m = `❌ ${e.message || 'خطا'}`; a.innerHTML = `<div class="alert alert-error">${m}</div>`; } }
 async function register() { const e = document.getElementById('registerEmail').value.trim(); const p = document.getElementById('registerPassword').value; const c = document.getElementById('registerPasswordConfirm').value; const a = document.getElementById('loginAlert'); if (!e || !p || !c) { a.innerHTML = '<div class="alert alert-error">❌ همه فیلدها را پر کنید</div>'; return; } if (p !== c) { a.innerHTML = '<div class="alert alert-error">❌ رمزها یکسان نیستند</div>'; return; } if (p.length < 6) { a.innerHTML = '<div class="alert alert-error">❌ رمز حداقل ۶ کاراکتر باشد</div>'; return; } try { a.innerHTML = '<div class="loading"><div class="spinner"></div><p>⏳ در حال ثبت‌نام...</p></div>'; const cr = await createUserWithEmailAndPassword(auth, e, p); currentUser = cr.user; onLoginSuccess(); } catch (e) { console.error(e); let m = '❌ خطا'; if (e.code === 'auth/email-already-in-use') m = '❌ ایمیل قبلاً ثبت شده'; else if (e.code === 'auth/weak-password') m = '❌ رمز ضعیف'; else m = `❌ ${e.message || 'خطا'}`; a.innerHTML = `<div class="alert alert-error">${m}</div>`; } }
-async function resetPassword() { const e = document.getElementById('forgotEmail').value.trim(); const a = document.getElementById('loginAlert'); if (!e) { a.innerHTML = '<div class="alert alert-error"> ایمیل را وارد کنید</div>'; return; } if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { a.innerHTML = '<div class="alert alert-error">❌ فرمت ایمیل صحیح نیست</div>'; return; } try { a.innerHTML = '<div class="loading"><div class="spinner"></div><p> ارسال...</p></div>'; await sendPasswordResetEmail(auth, e); a.innerHTML = `<div class="alert alert-success">✅ ایمیل ارسال شد!</div>`; setTimeout(() => showLogin(), 3000); } catch (e) { let m = '❌ خطا'; if (e.code === 'auth/user-not-found') m = '❌ ایمیل ثبت نشده'; else m = `❌ ${e.message || 'خطا'}`; a.innerHTML = `<div class="alert alert-error">${m}</div>`; } }
+async function resetPassword() { const e = document.getElementById('forgotEmail').value.trim(); const a = document.getElementById('loginAlert'); if (!e) { a.innerHTML = '<div class="alert alert-error">❌ ایمیل را وارد کنید</div>'; return; } if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { a.innerHTML = '<div class="alert alert-error">❌ فرمت ایمیل صحیح نیست</div>'; return; } try { a.innerHTML = '<div class="loading"><div class="spinner"></div><p>⏳ ارسال...</p></div>'; await sendPasswordResetEmail(auth, e); a.innerHTML = `<div class="alert alert-success">✅ ایمیل ارسال شد!</div>`; setTimeout(() => showLogin(), 3000); } catch (e) { let m = '❌ خطا'; if (e.code === 'auth/user-not-found') m = '❌ ایمیل ثبت نشده'; else m = `❌ ${e.message || 'خطا'}`; a.innerHTML = `<div class="alert alert-error">${m}</div>`; } }
 
 async function onLoginSuccess() { document.getElementById('loginPage').style.display = 'none'; document.getElementById('appPage').style.display = 'block'; document.getElementById('userEmail').textContent = currentUser.email; dm.setUserId(currentUser.uid); await dm.loadData(); dm.startRealtimeSync(); ui = new UI(dm); await ui.afterDataLoaded(); ui.updateAll(); }
 async function logout() { if (!confirm('خارج می‌شوید؟')) return; dm.stopRealtimeSync(); await signOut(auth); currentUser = null; document.getElementById('loginPage').style.display = 'block'; document.getElementById('appPage').style.display = 'none'; showLogin(); }
@@ -1198,7 +1215,7 @@ async function installApp() { if (!deferredPrompt) { showNotification('مرور�
 async function saveBucketSettings() { const n = parseInt(document.getElementById('percentNecessities').value); const d = parseInt(document.getElementById('percentDebt').value); const s = parseInt(document.getElementById('percentSavings').value); const r = parseInt(document.getElementById('percentReward').value); if (n+d+s+r !== 100) { showNotification('مجموع باید ۱۰۰ باشد', 'error'); return; } dm.data.buckets.necessities.percent = n; dm.data.buckets.debt.percent = d; dm.data.buckets.savings.percent = s; dm.data.buckets.reward.percent = r; await dm.addAuditLog('update', 'settings', 'تغییر تنظیمات سطل‌ها'); await dm.saveData(); showNotification('✅ ذخیره شد', 'success'); }
 function exportData() { const b = new Blob([JSON.stringify(dm.data, null, 2)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `backup-${JalaliDate.today()}.json`; a.click(); showNotification('✅ دانلود شد', 'success'); }
 function exportCSV() { let c = '\uFEFFنوع,مبلغ,حساب,دسته,توضیحات,تاریخ\n'; dm.data.transactions.forEach(t => { const a = dm.data.accounts.find(x => x.id === t.accountId); c += `${t.type==='income'?'درآمد':'هزینه'},${t.amount},${a?a.name:''},${t.category},"${t.description||''}",${t.date}\n`; }); const b = new Blob([c], { type: 'text/csv;charset=utf-8;' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `transactions-${JalaliDate.today()}.csv`; a.click(); showNotification('✅ CSV دانلود شد', 'success'); }
-async function createManualBackup() { await dm.createBackup('manual'); await dm.saveData(); showNotification('💾 Backup دستی ایجاد شد', 'success'); }
+async function createManualBackup() { await dm.createBackup('manual'); await dm.saveData(); showNotification(' Backup دستی ایجاد شد', 'success'); }
 
 async function generateMonthlyReport() {
   try {
@@ -1288,7 +1305,7 @@ window.generateMonthlyReport = generateMonthlyReport;
 async function resetAllData() {
   const confirmText = document.getElementById('resetConfirmText').value.trim();
   if (confirmText !== 'DELETE') {
-    showNotification(' برای تأیید، باید کلمه DELETE را تایپ کنید', 'error');
+    showNotification('❌ برای تأیید، باید کلمه DELETE را تایپ کنید', 'error');
     return;
   }
   if (!confirm('⚠️ آخرین هشدار: تمام داده‌ها پاک می‌شوند! مطمئن هستید؟')) return;
